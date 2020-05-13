@@ -32,16 +32,7 @@ public class CarregaProduto extends HttpServlet {
 
             try {
 
-                GenericDAO dao = new UnidadeDAOImpl();
-                request.setAttribute("unidades", dao.listar());
-
-                dao = new MarcaDAOIpml();
-                request.setAttribute("marcas", dao.listar());
-
-                dao = new FornecedorDAOIpml();
-                request.setAttribute("fornecedores", dao.listar());
-
-                dao = new ProdutoDAOImpl();
+                GenericDAO dao = new ProdutoDAOImpl();
                 request.setAttribute("produto", dao.carregar(idProduto));
                 request.getRequestDispatcher("produto/cadastrar.jsp").forward(request, response);
 

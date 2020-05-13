@@ -24,28 +24,29 @@
                 <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
-                          
-                            <th>Total em Estoque</th>
-
-
+                            
+                            
+                            <td>Codigo</td>
+                            <td>Descricao</td>
+                            <td>Unidade</td>
+                            <td>Marca</td>
+                            <td>Fornecedor</td>
+                            <td>Total em Estoque</td>
                         </tr>
                     </thead>
-                    <tfoot>	               
-                    <tbody>
-
-                      
-
-                            <tr>
-                               
-                                <td>${item.totalItem}</td>
-
-
-                            </tr>
+                   <tbody>
                        
-
-
+                            <tr>
+                                <td>${produto.idProduto}</td>
+                                <td>${produto.descricaoProduto}</td>
+                                <td>${produto.idUnidade.descUnidade}</td>
+                                <td>${produto.idMarca.nomeMarca}</td>
+                                <td>${produto.idFornecedor.nomePessoa}</td>
+                                <td>${item.totalItem}</td>
+                              
+                                                         </tr>
+                       
                     </tbody>
-
                 </table>
                 <button type="submit" class="btn btn-primary">Retirada</button>
                 <button type="submit" class="btn btn-primary">Inserir Estoque</button>

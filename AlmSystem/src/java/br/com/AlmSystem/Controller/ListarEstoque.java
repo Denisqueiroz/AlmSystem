@@ -7,6 +7,8 @@ package br.com.AlmSystem.Controller;
 
 import br.com.AlmSystem.DAO.GenericDAO;
 import br.com.AlmSystem.DAO.ItemDAOIpml;
+import br.com.AlmSystem.DAO.ProdutoDAOImpl;
+import br.com.AlmSystem.DAO.UnidadeDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -29,8 +31,9 @@ public class ListarEstoque extends HttpServlet {
          
             ItemDAOIpml itemDAOIpml = new ItemDAOIpml();
             
-//            GenericDAO dao = new ItemDAOIpml();
-//            request.setAttribute("items", dao.listar());
+            GenericDAO dao = new ProdutoDAOImpl();
+            request.setAttribute("produto", dao.carregar(idProduto));
+                                              
 
             request.setAttribute("item", itemDAOIpml.SomaQuantidade(idProduto));
             request.getRequestDispatcher("estoque/listar.jsp").forward(request, response);

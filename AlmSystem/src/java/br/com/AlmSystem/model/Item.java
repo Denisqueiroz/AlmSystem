@@ -47,6 +47,8 @@ public class Item {
         this.idProduto = idProduto;
     }
 
+  
+
    
     /**
      * @return the idItem
@@ -130,6 +132,10 @@ public class Item {
      */
     public void setTotalItem(Integer totalItem) {
         this.totalItem = totalItem;
+    }
+
+    public void setProduto(Produto produto) {
+       this.idProduto = idProduto;
     }
 
    

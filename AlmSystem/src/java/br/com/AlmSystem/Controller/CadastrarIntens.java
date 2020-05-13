@@ -31,24 +31,25 @@ public class CadastrarIntens extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
-        response.setContentType("text/html;charset=UTF-8");
-        String mensagem = "";
+        response.setContentType("text/html;charset=ISO-8859-1");
+
         try (PrintWriter out = response.getWriter()) {
 
-            try {
+         
 
                 Item item = new Item();
+
+                item.setSaldoItem(Integer.parseInt(request.getParameter("saldoItem")));
+                item.setDataCompraItem(request.getParameter("dataCompraItem"));
+                item.setDataValidadeItem(request.getParameter("dataValidadeItem"));
+
+                Produto produto = new Produto();
+                produto.setIdProduto(Integer.parseInt(request.getParameter("idProduto")));
+                item.setIdProduto(produto);
                 
-                Integer saldoItem = Integer.parseInt(request.getParameter("saldoItem"));
-                String dataCompraItem = request.getParameter("dataCompraItem");
-                String dataValidadeItem = request.getParameter("dataValidadeItem");
-                Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
-
-                item.setSaldoItem(saldoItem);
-                item.setDataCompraItem(dataCompraItem);
-                item.setDataValidadeItem(dataValidadeItem);
-                item.setIdProduto(new Produto(idProduto));
-
+                String mensagem = null;
+               try {
+                   
                 GenericDAO dao = new ItemDAOIpml();
                 if (request.getParameter("idItem").equals("")) {
                     if (dao.cadastrar(item)) {
@@ -56,16 +57,7 @@ public class CadastrarIntens extends HttpServlet {
                     } else {
                         mensagem = "Problemas aos cadastrat o item ";
                     }
-                } else {
-                    item.setIdItem(Integer.parseInt((request.getParameter("idItem"))));
-
-                    if (dao.alterar(item)) {
-                        mensagem = "Item Alterado com Sucesso!";
-                    } else {
-                        mensagem = "Probelmas ao alterar item";
-                    }
-
-                }
+                } 
 
                 request.setAttribute("mensagem", mensagem);
                 request.getRequestDispatcher("ListarItens").forward(request, response);

@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author TBO-002
  */
-public class ProdutoDAOImpl  implements GenericDAO {
+public class ProdutoDAOImpl implements GenericDAO {
 
     private Connection conn;
 
@@ -38,8 +38,8 @@ public class ProdutoDAOImpl  implements GenericDAO {
     public Boolean cadastrar(Object object) {
         Produto produto = (Produto) object;
         PreparedStatement stmt = null;
-        String sql = "INSERT INTO produto( descricao, id_uni, id_marca, id_forne) \n" +
-                       " VALUES (?, ?, ?, ?  ) ";
+        String sql = "INSERT INTO produto( descricao, id_uni, id_marca, id_forne) \n"
+                + " VALUES (?, ?, ?, ?  ) ";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class ProdutoDAOImpl  implements GenericDAO {
     }
 
     @Override
-    public List<Object> listar()  {
+    public List<Object> listar() {
         List<Object> produtos = new ArrayList<Object>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -78,12 +78,11 @@ public class ProdutoDAOImpl  implements GenericDAO {
             while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setIdProduto(rs.getInt("id_prod"));
-                produto.setDescricaoProduto(rs.getString("descricao"));                            
-                produto.setIdUnidade(new Unidade(rs.getInt("id_uni"), rs.getString("descricao")));
+                produto.setDescricaoProduto(rs.getString("descricao"));
+                produto.setIdUnidade(new Unidade(rs.getInt("id_uni"), rs.getString("descricao_uni")));
                 produto.setIdMarca(new Marca(rs.getInt("id_marca"), rs.getString("nome_marca")));
                 produto.setIdFornecedor(new Fornecedor(rs.getInt("id_forne"), rs.getString("nome")));
-               
-                
+
                 produtos.add(produto);
             }
         } catch (SQLException ex) {
@@ -101,7 +100,7 @@ public class ProdutoDAOImpl  implements GenericDAO {
     }
 
     @Override
-    public Boolean excluir(int idObject)  {
+    public Boolean excluir(int idObject) {
         PreparedStatement stmt = null;
         String sql = "DELETE FROM produto WHERE id_prod = ?;";
 
@@ -133,12 +132,10 @@ public class ProdutoDAOImpl  implements GenericDAO {
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, produto.getDescricaoProduto());
-            stmt.setInt(2,produto.getIdUnidade().getIdUnidade());
+            stmt.setInt(2, produto.getIdUnidade().getIdUnidade());
             stmt.setInt(3, produto.getIdMarca().getIdMarca());
             stmt.setInt(4, produto.getIdFornecedor().getIdFornecedor());
             stmt.setInt(5, produto.getIdProduto());
-            
-            
 
             stmt.execute();
             return true;
@@ -162,7 +159,12 @@ public class ProdutoDAOImpl  implements GenericDAO {
         Produto produto = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = " select * from produto where id_prod = ?";
+        String sql = " select p.*,u.*,m.*,f.*,pe,nome from produto p\n"
+                + "inner join unidade u on u.id_uni = p.id_uni\n"
+                + "inner join marca m on m.id_marca = p.id_marca\n"
+                + "inner join fornecedor f on f.id_forne = p.id_forne\n"
+                + "inner join pessoa pe on pe.id_pessoa = f.id_pessoa\n"
+                + "where p.id_prod = ?";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -172,7 +174,9 @@ public class ProdutoDAOImpl  implements GenericDAO {
                 produto = new Produto();
                 produto.setIdProduto(rs.getInt("id_prod"));
                 produto.setDescricaoProduto(rs.getString("descricao"));
-               
+                produto.setIdUnidade(new Unidade(rs.getInt("id_uni"), rs.getString("descricao_uni")));
+                produto.setIdMarca(new Marca(rs.getInt("id_marca"), rs.getString("nome_marca")));
+                produto.setIdFornecedor(new Fornecedor(rs.getInt("id_forne"), rs.getString("nome")));
 
             }
         } catch (SQLException ex) {
@@ -189,5 +193,3 @@ public class ProdutoDAOImpl  implements GenericDAO {
         return produto;
     }
 }
-
-

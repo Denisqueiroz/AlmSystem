@@ -70,8 +70,7 @@ public class ItemDAOIpml implements GenericDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "select i.*,p.* from item i\n"
-                + "inner join  produto p on p.id_prod = p.id_prod \n"
-                + "inner join fornecedor f on p.id_forne = f.id_forne";
+                + "inner join produto p on i.id_prod = p.id_prod";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -197,21 +196,19 @@ public class ItemDAOIpml implements GenericDAO {
         return item;
     }
 
-     public Item SomaQuantidade(int idProduto) {
-        Item item = null ;
+    public Item SomaQuantidade(int idProduto) {
+        Item item = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = "SELECT Sum(quantidade) as quantidade from item where id_prod = ? " ;
-                    
-               
+        String sql = "SELECT Sum(quantidade) as quantidade from item where id_prod = ? ";
+
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idProduto);
             rs = stmt.executeQuery();
             while (rs.next()) {
-              item = new Item();
+                item = new Item();
                 item.setTotalItem(rs.getInt("quantidade"));
-               
 
             }
         } catch (SQLException ex) {
@@ -229,5 +226,29 @@ public class ItemDAOIpml implements GenericDAO {
         return item;
 
     }
+    //Denis  voce terar que carragar o  item  para realizar a retida não se esqueça 
+ 
+    public  Boolean SubtrairQuantidade(Object object) {
+       Item item = (Item) object;
+        PreparedStatement stmt = null;
+        String sql = "UPDATE item SET  quantidade= quantidade - ? WHERE id_item= ?; ";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, item.getSaldoItem());
+            stmt.execute();
+          return true ;
+        } catch (SQLException ex) {
+            System.out.println("Problemas ao alterar ItemDAO! Erro: " + ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        } finally {
 
+            try {
+                ConnectionFactory.closeConnection(conn, stmt);
+            } catch (Exception ex) {
+                System.out.println("Problemas ao fechar os parâmetros de conexão! Erro: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+    }
 }

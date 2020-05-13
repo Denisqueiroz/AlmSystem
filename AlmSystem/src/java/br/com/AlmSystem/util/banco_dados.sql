@@ -74,15 +74,6 @@ constraint fk_produto  foreign key(id_prod) references produto(id_prod)
 );
 
 
-create table estoque (
-id_estoque serial not null,
-data_entrada varchar(13),
-status varchar(10),	
-saldo int,
-id_item integer,
-constraint pk_estoque primary key (id_estoque),
-CONSTRAINT fk_item FOREIGN KEY(id_item) REFERENCES item(id_item)
-	
-);
+
 
 
