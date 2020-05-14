@@ -44,9 +44,9 @@ public class ProdutoDAOImpl implements GenericDAO {
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, produto.getDescricaoProduto());
-            stmt.setInt(2, produto.getIdUnidade().getIdUnidade());
-            stmt.setInt(3, produto.getIdMarca().getIdMarca());
-            stmt.setInt(4, produto.getIdFornecedor().getIdFornecedor());
+            stmt.setInt(2, produto.getUnidade().getIdUnidade());
+            stmt.setInt(3, produto.getMarca().getIdMarca());
+            stmt.setInt(4, produto.getFornecedor().getIdFornecedor());
 
             stmt.execute();
             return true;
@@ -79,9 +79,9 @@ public class ProdutoDAOImpl implements GenericDAO {
                 Produto produto = new Produto();
                 produto.setIdProduto(rs.getInt("id_prod"));
                 produto.setDescricaoProduto(rs.getString("descricao"));
-                produto.setIdUnidade(new Unidade(rs.getInt("id_uni"), rs.getString("descricao_uni")));
-                produto.setIdMarca(new Marca(rs.getInt("id_marca"), rs.getString("nome_marca")));
-                produto.setIdFornecedor(new Fornecedor(rs.getInt("id_forne"), rs.getString("nome")));
+                produto.setUnidade(new Unidade(rs.getInt("id_uni"), rs.getString("descricao_uni")));
+                produto.setMarca(new Marca(rs.getInt("id_marca"), rs.getString("nome_marca")));
+                produto.setFornecedor(new Fornecedor(rs.getInt("id_forne"), rs.getString("nome")));
 
                 produtos.add(produto);
             }
@@ -132,9 +132,9 @@ public class ProdutoDAOImpl implements GenericDAO {
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, produto.getDescricaoProduto());
-            stmt.setInt(2, produto.getIdUnidade().getIdUnidade());
-            stmt.setInt(3, produto.getIdMarca().getIdMarca());
-            stmt.setInt(4, produto.getIdFornecedor().getIdFornecedor());
+            stmt.setInt(2, produto.getUnidade().getIdUnidade());
+            stmt.setInt(3, produto.getMarca().getIdMarca());
+            stmt.setInt(4, produto.getFornecedor().getIdFornecedor());
             stmt.setInt(5, produto.getIdProduto());
 
             stmt.execute();
@@ -174,9 +174,9 @@ public class ProdutoDAOImpl implements GenericDAO {
                 produto = new Produto();
                 produto.setIdProduto(rs.getInt("id_prod"));
                 produto.setDescricaoProduto(rs.getString("descricao"));
-                produto.setIdUnidade(new Unidade(rs.getInt("id_uni"), rs.getString("descricao_uni")));
-                produto.setIdMarca(new Marca(rs.getInt("id_marca"), rs.getString("nome_marca")));
-                produto.setIdFornecedor(new Fornecedor(rs.getInt("id_forne"), rs.getString("nome")));
+                produto.setUnidade(new Unidade(rs.getInt("id_uni"), rs.getString("descricao_uni")));
+                produto.setMarca(new Marca(rs.getInt("id_marca"), rs.getString("nome_marca")));
+                produto.setFornecedor(new Fornecedor(rs.getInt("id_forne"), rs.getString("nome")));
 
             }
         } catch (SQLException ex) {

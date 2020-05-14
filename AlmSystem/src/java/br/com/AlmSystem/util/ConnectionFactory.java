@@ -7,7 +7,6 @@ package br.com.AlmSystem.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,38 +25,27 @@ public class ConnectionFactory {
         }
     }
    
-    public static void closeConnection(Connection conn, Statement stmt, ResultSet rs) throws Exception {
+    public static void closeConnection(Connection conn, Statement stmt, ResultSet rs) throws Exception{
         close(conn, stmt, rs);
     }
-
-    public static void closeConnection(Connection conn, Statement stmt) throws Exception {
+    
+    public static void closeConnection(Connection conn, Statement stmt) throws Exception{
         close(conn, stmt, null);
     }
-
-   
-
-    public static void close(Connection conn, Statement stmt, ResultSet rs) throws Exception {
-        try {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-
-        } catch (SQLException e) {
-            throw new Exception(e.getMessage());
+    
+    public static void closeConnection(Connection conn) throws Exception{
+        close(conn, null, null);
+    }
+    
+    private static void close(Connection conn, Statement stmt, ResultSet rs) throws Exception{
+        try{
+            if (rs != null) rs.close();
+            if (stmt != null) stmt.close();
+            if (conn != null) conn.close();
+        } catch(SQLException ex){
+            throw new Exception("Problemas ao fechar conexão! Erro: " + ex.getMessage());
         }
+        
     }
-
-    public static void close(Connection conn, ResultSet rs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static void close(Connection conn, ResultSet rs, PreparedStatement stmt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

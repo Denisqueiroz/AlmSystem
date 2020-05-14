@@ -13,9 +13,9 @@ public class Produto {
 
     private Integer idProduto;
     private String descricaoProduto;
-    private Marca idMarca;
-    private Fornecedor idFornecedor;
-    private Unidade idUnidade;
+    private Marca marca;
+    private Fornecedor fornecedor;
+    private Unidade unidade;
     private Integer descUnidade;
 
     public Produto() {
@@ -28,9 +28,9 @@ public class Produto {
     public Produto(Integer idProduto, String descricaoProduto, Marca idMarca, Fornecedor idFornecedor, Unidade idUnidade, Integer descUnidade) {
         this.idProduto = idProduto;
         this.descricaoProduto = descricaoProduto;
-        this.idMarca = idMarca;
-        this.idFornecedor = idFornecedor;
-        this.idUnidade = idUnidade;
+        this.marca = idMarca;
+        this.fornecedor = idFornecedor;
+        this.unidade = idUnidade;
         this.descUnidade = descUnidade;
     }
 
@@ -71,45 +71,45 @@ public class Produto {
     }
 
     /**
-     * @return the idMarca
+     * @return the marca
      */
-    public Marca getIdMarca() {
-        return idMarca;
+    public Marca getMarca() {
+        return marca;
     }
 
     /**
-     * @param idMarca the idMarca to set
+     * @param marca the marca to set
      */
-    public void setIdMarca(Marca idMarca) {
-        this.idMarca = idMarca;
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 
     /**
-     * @return the idFornecedor
+     * @return the fornecedor
      */
-    public Fornecedor getIdFornecedor() {
-        return idFornecedor;
+    public Fornecedor getFornecedor() {
+        return fornecedor;
     }
 
     /**
-     * @param idFornecedor the idFornecedor to set
+     * @param fornecedor the fornecedor to set
      */
-    public void setIdFornecedor(Fornecedor idFornecedor) {
-        this.idFornecedor = idFornecedor;
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
     /**
-     * @return the idUnidade
+     * @return the unidade
      */
-    public Unidade getIdUnidade() {
-        return idUnidade;
+    public Unidade getUnidade() {
+        return unidade;
     }
 
     /**
-     * @param idUnidade the idUnidade to set
+     * @param unidade the unidade to set
      */
-    public void setIdUnidade(Unidade idUnidade) {
-        this.idUnidade = idUnidade;
+    public void setUnidade(Unidade unidade) {
+        this.unidade = unidade;
     }
 
     /**

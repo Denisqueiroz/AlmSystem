@@ -5,6 +5,8 @@
  */
 package br.com.AlmSystem.model;
 
+import java.util.Date;
+
 /**
  *
  * @author TBO-002
@@ -13,8 +15,8 @@ public class Item {
     
     private Integer idItem;
     private Integer saldoItem;
-    private String dataValidadeItem;
-    private String dataCompraItem;
+    private Date dataValidadeItem;
+    private Date dataCompraItem;
     private Integer totalItem ;
     private Produto idProduto;
 
@@ -25,7 +27,7 @@ public class Item {
         this.idItem = idItem;
     }
 
-    public Item(Integer idItem, Integer saldoItem, String dataValidadeItem, String dataCompraItem,Integer totalItem, Produto idProduto) {
+    public Item(Integer idItem, Integer saldoItem, Date dataValidadeItem, Date dataCompraItem,Integer totalItem, Produto idProduto) {
         this.idItem = idItem;
         this.saldoItem = saldoItem;
         this.dataValidadeItem = dataValidadeItem;
@@ -34,7 +36,7 @@ public class Item {
         this.idProduto = idProduto;
     }
 
-    public Item(Integer idItem, Integer saldoItem, String dataCompraItem, String dataValidadeItem ) {
+    public Item(Integer idItem, Integer saldoItem, Date dataCompraItem, Date dataValidadeItem ) {
         this.idItem = idItem;
         this.saldoItem = saldoItem;
         this.dataCompraItem = dataCompraItem ;
@@ -81,28 +83,28 @@ public class Item {
     /**
      * @return the dataValidadeItem
      */
-    public String getDataValidadeItem() {
+    public Date getDataValidadeItem() {
         return dataValidadeItem;
     }
 
     /**
      * @param dataValidadeItem the dataValidadeItem to set
      */
-    public void setDataValidadeItem(String dataValidadeItem) {
+    public void setDataValidadeItem(Date dataValidadeItem) {
         this.dataValidadeItem = dataValidadeItem;
     }
 
     /**
      * @return the dataCompraItem
      */
-    public String getDataCompraItem() {
+    public Date getDataCompraItem() {
         return dataCompraItem;
     }
 
     /**
      * @param dataCompraItem the dataCompraItem to set
      */
-    public void setDataCompraItem(String dataCompraItem) {
+    public void setDataCompraItem(Date dataCompraItem) {
         this.dataCompraItem = dataCompraItem;
     }
 

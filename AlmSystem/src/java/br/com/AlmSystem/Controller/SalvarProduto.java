@@ -41,9 +41,9 @@ public class SalvarProduto extends HttpServlet {
                 Produto produto = new Produto();
                 produto.setDescricaoProduto(descricaoProduto);
 
-                produto.setIdUnidade(new Unidade(idUnidade));
-                produto.setIdMarca(new Marca(idMarca));
-                produto.setIdFornecedor(new Fornecedor(idFornecedor));
+                produto.setUnidade(new Unidade(idUnidade));
+                produto.setMarca(new Marca(idMarca));
+                produto.setFornecedor(new Fornecedor(idFornecedor));
 
                 GenericDAO dao = new ProdutoDAOImpl();
 

@@ -17,7 +17,6 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,8 +39,8 @@ public class CadastrarIntens extends HttpServlet {
                 Item item = new Item();
 
                 item.setSaldoItem(Integer.parseInt(request.getParameter("saldoItem")));
-                item.setDataCompraItem(request.getParameter("dataCompraItem"));
-                item.setDataValidadeItem(request.getParameter("dataValidadeItem"));
+                item.setDataCompraItem(Conversoes.converterStringDate(request.getParameter("dataCompraItem")));
+                item.setDataValidadeItem(Conversoes.converterStringDate(request.getParameter("dataValidadeItem")));
 
                 Produto produto = new Produto();
                 produto.setIdProduto(Integer.parseInt(request.getParameter("idProduto")));

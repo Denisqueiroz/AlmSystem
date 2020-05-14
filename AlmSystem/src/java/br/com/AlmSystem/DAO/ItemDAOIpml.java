@@ -23,12 +23,12 @@ public class ItemDAOIpml implements GenericDAO {
 
     private Connection conn;
 
-    public ItemDAOIpml() throws Exception {
+    public ItemDAOIpml() {
         try {
             this.conn = ConnectionFactory.getConnection();
-            System.out.println("Conectado com sucesso");
-        } catch (Exception e) {
-            throw new Exception(e.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Problemas ao conectar ao BD! Erro: " + ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -43,10 +43,9 @@ public class ItemDAOIpml implements GenericDAO {
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, item.getSaldoItem());
-            stmt.setString(2, item.getDataCompraItem());
-            stmt.setString(3, item.getDataValidadeItem());
+            stmt.setDate(2, new java.sql.Date(item.getDataCompraItem().getTime()));
+            stmt.setDate(3, new java.sql.Date(item.getDataValidadeItem().getTime()));
             stmt.setInt(4, item.getIdProduto().getIdProduto());
-
             stmt.execute();
             return true;
         } catch (Exception e) {
@@ -81,8 +80,8 @@ public class ItemDAOIpml implements GenericDAO {
 
                 item.setIdItem(rs.getInt("id_item"));
                 item.setSaldoItem(rs.getInt("quantidade"));
-                item.setDataCompraItem(rs.getString("data_compra"));
-                item.setDataValidadeItem(rs.getString("data_validade"));
+                item.setDataCompraItem(rs.getDate("data_compra"));
+                item.setDataValidadeItem(rs.getDate("data_validade"));
                 item.setIdProduto(new Produto(rs.getInt("id_prod"), rs.getString("descricao")));
 
                 items.add(item);
@@ -134,8 +133,8 @@ public class ItemDAOIpml implements GenericDAO {
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, item.getSaldoItem());
-            stmt.setString(2, item.getDataCompraItem());
-            stmt.setString(3, item.getDataValidadeItem());
+            stmt.setDate(2, new java.sql.Date(item.getDataCompraItem().getTime()));
+            stmt.setDate(3, new java.sql.Date(item.getDataValidadeItem().getTime()));
             stmt.setInt(4, item.getIdProduto().getIdProduto());
             stmt.execute();
 
@@ -177,8 +176,8 @@ public class ItemDAOIpml implements GenericDAO {
                 item = new Item();
                 item.setIdItem(rs.getInt("id_item"));
                 item.setSaldoItem(rs.getInt("quantidade"));
-                item.setDataCompraItem(rs.getString("data_compra"));
-                item.setDataValidadeItem(rs.getString("data_validade"));
+                item.setDataCompraItem(rs.getDate("data_compra"));
+                item.setDataValidadeItem(rs.getDate("data_validade"));
                 item.setIdProduto(new Produto(rs.getInt("id_prod")));
 
             }
@@ -227,16 +226,16 @@ public class ItemDAOIpml implements GenericDAO {
 
     }
     //Denis  voce terar que carragar o  item  para realizar a retida não se esqueça 
- 
-    public  Boolean SubtrairQuantidade(Object object) {
-       Item item = (Item) object;
+
+    public Boolean SubtrairQuantidade(Object object) {
+        Item item = (Item) object;
         PreparedStatement stmt = null;
         String sql = "UPDATE item SET  quantidade= quantidade - ? WHERE id_item= ?; ";
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, item.getSaldoItem());
             stmt.execute();
-          return true ;
+            return true;
         } catch (SQLException ex) {
             System.out.println("Problemas ao alterar ItemDAO! Erro: " + ex.getMessage());
             ex.printStackTrace();

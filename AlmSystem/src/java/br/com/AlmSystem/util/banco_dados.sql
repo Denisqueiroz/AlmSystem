@@ -64,8 +64,9 @@ create table item (
 	
 id_item serial not null,
 quantidade integer,
-data_compra varchar(13),	
-data_validade varchar(13),
+data_compra date,	
+data_validade date,
+data_entrada date,
 id_prod integer,
 
 constraint pk_item primary key (id_item),
