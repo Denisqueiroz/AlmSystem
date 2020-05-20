@@ -19,7 +19,7 @@
             <section class="layout-content">
 
                 <div class="container" id="cadastro">
-                    <form action="${pageContext.request.contextPath}/CadastrarIntens"  method="POST" class="formulario"> 
+   <form action="${pageContext.request.contextPath}/SalvarItem"  method="POST" enctype="multipart/form-data"  class="formulario"> 
                         <p class="text-center text-uppercase">${mensagem}</p>
                         <div class="form-row">
                             <div  class="form-group col-md-2" >
@@ -50,10 +50,10 @@
                             </div>
 
                             <div class="form-group col-md-3"> 
-                                <label for="dataEntradaItem">Data da Compra</label>
-                                <input type="date" class="form-control" id="dataEntradaItem" 
-                                       autofocus="autofocus" name="dataEntradaItem" value="${item.dataEntradaItem}"/>
-                                <div class="invalid-feedback">
+                                <label for="dataCompraItem">Data da Compra</label>
+            <input type="date" class="form-control" id="dataCompraItem" 
+          autofocus="autofocus" name="dataCompraItem" value="${item.dataCompraItem}"/>
+            <div class="invalid-feedback">
 
                                 </div>
                             </div>
@@ -67,11 +67,18 @@
                                 </div>
                             </div>
 
+                   <label for="notafiscai">Nota Fiscal: </label><input type="file" value="${item.notafiscal}" 
+                    name="notafiscal" id="notafiscal" placeholder="Nota Fiscal" /><br />     
+                                
+                                
+                                
                         </div>
                         <div class="form-row">
                             <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 
                         </div>
+                                
+                 
 
                     </form>
 

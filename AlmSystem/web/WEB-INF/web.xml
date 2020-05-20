@@ -48,6 +48,10 @@
         <servlet-name>ListarEstoque</servlet-name>
         <servlet-class>br.com.AlmSystem.Controller.ListarEstoque</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SalvarItem</servlet-name>
+        <servlet-class>br.com.AlmSystem.Controller.SalvarItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogarUsuario</servlet-name>
         <url-pattern>/LogarUsuario</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ListarEstoque</servlet-name>
         <url-pattern>/ListarEstoque</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SalvarItem</servlet-name>
+        <url-pattern>/SalvarItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

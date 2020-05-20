@@ -23,23 +23,20 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ListarItens", urlPatterns = {"/ListarItens"})
 public class ListarItens extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           
-             
-             GenericDAO dao = new ItemDAOIpml();
-             
-                        
-             request.setAttribute("items", dao.listar());
-             request.getRequestDispatcher("itens/listar.jsp").forward(request, response);
-            } catch (Exception ex) {
-                System.out.println("Problemas no Servlet a o listar Itens! Erro: " + ex.getMessage());
-                ex.printStackTrace();
-            }
-        
+
+            GenericDAO dao = new ItemDAOIpml();
+
+            request.setAttribute("items", dao.listar());
+            request.getRequestDispatcher("itens/listar.jsp").forward(request, response);
+        } catch (Exception ex) {
+            System.out.println("Problemas no Servlet a o listar Itens! Erro: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

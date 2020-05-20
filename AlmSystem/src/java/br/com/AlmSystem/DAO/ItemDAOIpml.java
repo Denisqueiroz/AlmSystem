@@ -5,6 +5,7 @@
  */
 package br.com.AlmSystem.DAO;
 
+
 import br.com.AlmSystem.model.Item;
 import br.com.AlmSystem.model.Produto;
 import br.com.AlmSystem.util.ConnectionFactory;
@@ -37,15 +38,16 @@ public class ItemDAOIpml implements GenericDAO {
         Item item = (Item) object;
         PreparedStatement stmt = null;
 
-        String sql = "  INSERT INTO item ( quantidade, data_compra, data_validade,"
-                + " id_prod ) VALUES (?, ?, ?, ?);";
+        String sql = "  INSERT INTO item(quantidade, data_compra, data_validade,"
+                + "  id_prod, notafiscal)VALUES ( ?, ?, ?, ?, ?);";
 
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, item.getSaldoItem());
             stmt.setDate(2, new java.sql.Date(item.getDataCompraItem().getTime()));
             stmt.setDate(3, new java.sql.Date(item.getDataValidadeItem().getTime()));
-            stmt.setInt(4, item.getIdProduto().getIdProduto());
+            stmt.setInt(4, item.getProduto().getIdProduto());
+            stmt.setString(5, item.getNotafiscal());
             stmt.execute();
             return true;
         } catch (Exception e) {
@@ -82,7 +84,8 @@ public class ItemDAOIpml implements GenericDAO {
                 item.setSaldoItem(rs.getInt("quantidade"));
                 item.setDataCompraItem(rs.getDate("data_compra"));
                 item.setDataValidadeItem(rs.getDate("data_validade"));
-                item.setIdProduto(new Produto(rs.getInt("id_prod"), rs.getString("descricao")));
+                item.setDataEntrada(rs.getDate("data_entrada"));
+                item.setProduto(new Produto(rs.getInt("id_prod"), rs.getString("descricao")));
 
                 items.add(item);
 
@@ -135,7 +138,7 @@ public class ItemDAOIpml implements GenericDAO {
             stmt.setInt(1, item.getSaldoItem());
             stmt.setDate(2, new java.sql.Date(item.getDataCompraItem().getTime()));
             stmt.setDate(3, new java.sql.Date(item.getDataValidadeItem().getTime()));
-            stmt.setInt(4, item.getIdProduto().getIdProduto());
+            stmt.setInt(4, item.getProduto().getIdProduto());
             stmt.execute();
 
             if (new ItemDAOIpml().alterar(item)) {
@@ -178,7 +181,7 @@ public class ItemDAOIpml implements GenericDAO {
                 item.setSaldoItem(rs.getInt("quantidade"));
                 item.setDataCompraItem(rs.getDate("data_compra"));
                 item.setDataValidadeItem(rs.getDate("data_validade"));
-                item.setIdProduto(new Produto(rs.getInt("id_prod")));
+                item.setProduto(new Produto(rs.getInt("id_prod")));
 
             }
         } catch (SQLException ex) {
@@ -227,27 +230,27 @@ public class ItemDAOIpml implements GenericDAO {
     }
     //Denis  voce terar que carragar o  item  para realizar a retida não se esqueça 
 
-    public Boolean SubtrairQuantidade(Object object) {
-        Item item = (Item) object;
-        PreparedStatement stmt = null;
-        String sql = "UPDATE item SET  quantidade= quantidade - ? WHERE id_item= ?; ";
-        try {
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, item.getSaldoItem());
-            stmt.execute();
-            return true;
-        } catch (SQLException ex) {
-            System.out.println("Problemas ao alterar ItemDAO! Erro: " + ex.getMessage());
-            ex.printStackTrace();
-            return false;
-        } finally {
-
-            try {
-                ConnectionFactory.closeConnection(conn, stmt);
-            } catch (Exception ex) {
-                System.out.println("Problemas ao fechar os parâmetros de conexão! Erro: " + ex.getMessage());
-                ex.printStackTrace();
-            }
-        }
-    }
+//    public Boolean SubtrairQuantidade(Object object) {
+//        Item item = (Item) object;
+//        PreparedStatement stmt = null;
+//        String sql = "UPDATE item SET  quantidade= quantidade - ? WHERE id_item= ?; ";
+//        try {
+//            stmt = conn.prepareStatement(sql);
+//            stmt.setInt(1, item.getSaldoItem());
+//            stmt.execute();
+//            return true;
+//        } catch (SQLException ex) {
+//            System.out.println("Problemas ao alterar ItemDAO! Erro: " + ex.getMessage());
+//            ex.printStackTrace();
+//            return false;
+//        } finally {
+//
+//            try {
+//                ConnectionFactory.closeConnection(conn, stmt);
+//            } catch (Exception ex) {
+//                System.out.println("Problemas ao fechar os parâmetros de conexão! Erro: " + ex.getMessage());
+//                ex.printStackTrace();
+//            }
+//        }
+//    }
 }

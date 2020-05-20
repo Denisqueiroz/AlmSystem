@@ -64,6 +64,7 @@ create table item (
 	
 id_item serial not null,
 quantidade integer,
+notafiscal varchar(100),
 data_compra date,	
 data_validade date,
 data_entrada date,

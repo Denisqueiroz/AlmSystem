@@ -36,8 +36,9 @@
                             <th> Descrição Produto</th>
                             <th>Codigo Item</th>
                             <th>Quantidade</th>
-                            <th>Data de Entrada</th>
+                            <th>Data da Compra</th>
                             <th>Validade do Produto</th>
+                            <th>Data de Entrada</th>
                            
                         </tr>
                     </thead>
@@ -47,15 +48,16 @@
                         <c:forEach var="item"  items="${items}">
 
                             <tr>
-                                <td >${item.idProduto.idProduto}</td>
-                                <td>${item.idProduto.descricaoProduto}
+                                <td >${item.produto.idProduto}</td>
+                               <td >${item.produto.descricaoProduto}</td>
                                 <td >${item.idItem}</td>
                                 <td >${item.saldoItem}</td>
                                 <td>${item.dataValidadeItem}</td>
                                 <td>${item.dataCompraItem}</td>
+                                <td>${item.dataEntrada}</td>
 
 
-         <td><a href="ListarEstoque?idProduto=${item.idProduto.idProduto}"><button>Consultar Estoque</button></a></td>
+         <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
                                
                             </tr>
                         </c:forEach>

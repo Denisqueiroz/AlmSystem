@@ -39,12 +39,12 @@ public class CadastrarIntens extends HttpServlet {
                 Item item = new Item();
 
                 item.setSaldoItem(Integer.parseInt(request.getParameter("saldoItem")));
-                item.setDataCompraItem(Conversoes.converterStringDate(request.getParameter("dataCompraItem")));
-                item.setDataValidadeItem(Conversoes.converterStringDate(request.getParameter("dataValidadeItem")));
+                item.setDataCompraItem(Conversoes.converterData(request.getParameter("dataCompraItem")));
+                item.setDataValidadeItem(Conversoes.converterData(request.getParameter("dataValidadeItem")));
 
                 Produto produto = new Produto();
                 produto.setIdProduto(Integer.parseInt(request.getParameter("idProduto")));
-                item.setIdProduto(produto);
+                item.setProduto(produto);
                 
                 String mensagem = null;
                try {

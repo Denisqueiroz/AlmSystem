@@ -12,46 +12,27 @@ import java.util.Date;
  * @author TBO-002
  */
 public class Item {
-    
+
     private Integer idItem;
     private Integer saldoItem;
     private Date dataValidadeItem;
     private Date dataCompraItem;
-    private Integer totalItem ;
-    private Produto idProduto;
+    private Date dataEntrada ;
+    private String notafiscal;
+    private Integer totalItem;
+    private Produto produto;
 
     public Item() {
     }
 
-    public Item(Integer idItem) {
+    public Item(Integer idItem, Produto produto) {
         this.idItem = idItem;
+        this.produto = produto;
     }
 
-    public Item(Integer idItem, Integer saldoItem, Date dataValidadeItem, Date dataCompraItem,Integer totalItem, Produto idProduto) {
-        this.idItem = idItem;
-        this.saldoItem = saldoItem;
-        this.dataValidadeItem = dataValidadeItem;
-        this.dataCompraItem = dataCompraItem;
-        this.totalItem = totalItem ;
-        this.idProduto = idProduto;
-    }
-
-    public Item(Integer idItem, Integer saldoItem, Date dataCompraItem, Date dataValidadeItem ) {
-        this.idItem = idItem;
-        this.saldoItem = saldoItem;
-        this.dataCompraItem = dataCompraItem ;
-        this.dataValidadeItem = dataValidadeItem;
-        this.idProduto = idProduto;
-       
-    }
-
-    public Item(Produto idProduto) {
-        this.idProduto = idProduto;
-    }
-
-  
-
-   
+    
+    
+    
     /**
      * @return the idItem
      */
@@ -109,17 +90,31 @@ public class Item {
     }
 
     /**
-     * @return the idProduto
+     * @return the dataEntrada
      */
-    public Produto getIdProduto() {
-        return idProduto;
+    public Date getDataEntrada() {
+        return dataEntrada;
     }
 
     /**
-     * @param idProduto the idProduto to set
+     * @param dataEntrada the dataEntrada to set
      */
-    public void setIdProduto(Produto idProduto) {
-        this.idProduto = idProduto;
+    public void setDataEntrada(Date dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    /**
+     * @return the notafiscal
+     */
+    public String getNotafiscal() {
+        return notafiscal;
+    }
+
+    /**
+     * @param notafiscal the notafiscal to set
+     */
+    public void setNotafiscal(String notafiscal) {
+        this.notafiscal = notafiscal;
     }
 
     /**
@@ -136,9 +131,19 @@ public class Item {
         this.totalItem = totalItem;
     }
 
-    public void setProduto(Produto produto) {
-       this.idProduto = idProduto;
+    /**
+     * @return the produto
+     */
+    public Produto getProduto() {
+        return produto;
     }
 
-   
+    /**
+     * @param produto the produto to set
+     */
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    
 }

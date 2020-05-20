@@ -18,6 +18,6 @@ public interface GenericDAO {
     public Boolean excluir(int idObject) throws Exception;;
     public Boolean alterar(Object object) throws Exception;;
     public Object carregar(int idObject) throws Exception;;
-//    public List<Object> SomaQuantidade() throws Exception;;
+
       
 }

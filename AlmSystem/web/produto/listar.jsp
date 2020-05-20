@@ -65,9 +65,9 @@
                             <tr>
                                 <td>${produto.idProduto}</td>
                                 <td>${produto.descricaoProduto}</td>
-                                <td>${produto.idUnidade.descUnidade}</td>
-                                <td>${produto.idMarca.nomeMarca}</td>
-                                <td>${produto.idFornecedor.nomePessoa}</td>
+                                <td>${produto.unidade.descUnidade}</td>
+                                <td>${produto.marca.nomeMarca}</td>
+                                <td>${produto.fornecedor.nomePessoa}</td>
                                
                                 
                                 
