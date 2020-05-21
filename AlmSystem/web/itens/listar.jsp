@@ -6,6 +6,7 @@
 
 <%@page import="br.com.AlmSystem.model.Item"%>
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 
 
@@ -39,7 +40,8 @@
                             <th>Data da Compra</th>
                             <th>Validade do Produto</th>
                             <th>Data de Entrada</th>
-                           
+                            <th>Nota Fiscal</th>
+
                         </tr>
                     </thead>
                     <tfoot>	               
@@ -49,16 +51,17 @@
 
                             <tr>
                                 <td >${item.produto.idProduto}</td>
-                               <td >${item.produto.descricaoProduto}</td>
+                                <td >${item.produto.descricaoProduto}</td>
                                 <td >${item.idItem}</td>
                                 <td >${item.saldoItem}</td>
-                                <td>${item.dataValidadeItem}</td>
-                                <td>${item.dataCompraItem}</td>
-                                <td>${item.dataEntrada}</td>
+                                <td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${item.dataValidadeItem}"></fmt:formatDate></td>
+                                <td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${item.dataCompraItem}"></fmt:formatDate></td>
+                                <td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${item.dataEntrada}"></fmt:formatDate></td>
+                                <td><a href="${item.notafiscal}" title="Baixar Nota" target="blank">Nota Fiscal</a></td>
 
 
-         <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
-                               
+                           <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
+                           <td><a href="CarregarSaldoEstoque?idItem=${item.idItem}"><button>Retirar Produto</button></a></td> 
                             </tr>
                         </c:forEach>
 

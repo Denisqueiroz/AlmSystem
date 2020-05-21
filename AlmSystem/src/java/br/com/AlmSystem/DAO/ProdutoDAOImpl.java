@@ -160,7 +160,7 @@ public class ProdutoDAOImpl implements GenericDAO {
         Produto produto = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = " select p.*,u.*,m.*,f.*,pe,nome from produto p\n"
+        String sql = " select p.*,u.*,m.*,f.*,pe.nome from produto p\n"
                 + "inner join unidade u on u.id_uni = p.id_uni\n"
                 + "inner join marca m on m.id_marca = p.id_marca\n"
                 + "inner join fornecedor f on f.id_forne = p.id_forne\n"

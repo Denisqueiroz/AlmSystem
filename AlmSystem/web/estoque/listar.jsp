@@ -24,6 +24,7 @@
                 <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
+                            <td>Item</td>
                             <td>Codigo</td>
                             <td>Descricao</td>
                             <td>Unidade</td>
@@ -33,20 +34,24 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        <tr>
-                            <td>${produto.idProduto}</td>
-                            <td>${produto.descricaoProduto}</td>
-                            <td>${produto.unidade.descUnidade}</td>
-                            <td>${produto.marca.nomeMarca}</td>
-                            <td>${produto.fornecedor.nomePessoa}</td>
-                            <td>${item.totalItem}</td>
-
-                        </tr>
-
+                      
+                    
+                            <tr>
+                                <td>${item.idItem}</td>
+                                <td>${produto.idProduto}</td>
+                                <td>${produto.descricaoProduto}</td>
+                                <td>${produto.unidade.descUnidade}</td>
+                                <td>${produto.marca.nomeMarca}</td>
+                                <td>${produto.fornecedor.nomePessoa}</td>
+                                <td>${item.totalItem}</td>                        
+                            </tr>
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-primary">Retirada</button>
+
+
+
+               <a href="RetirarEstoque?idProduto=${item.produto.idProduto}" role="button">           
+               <button type="submit"  class="btn btn-primary">Retirar</button></a>
                 <button type="submit" class="btn btn-primary">Inserir Estoque</button>
                 <button type="submit" class="btn btn-primary">Cancelar Saida</button>
             </div>

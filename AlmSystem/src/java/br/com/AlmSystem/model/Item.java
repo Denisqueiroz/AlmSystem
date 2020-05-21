@@ -20,6 +20,7 @@ public class Item {
     private Date dataEntrada ;
     private String notafiscal;
     private Integer totalItem;
+    private Integer retirada;
     private Produto produto;
 
     public Item() {
@@ -143,6 +144,20 @@ public class Item {
      */
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    /**
+     * @return the retirada
+     */
+    public Integer getRetirada() {
+        return retirada;
+    }
+
+    /**
+     * @param retirada the retirada to set
+     */
+    public void setRetirada(Integer retirada) {
+        this.retirada = retirada;
     }
 
     

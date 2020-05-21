@@ -5,7 +5,6 @@
  */
 package br.com.AlmSystem.DAO;
 
-
 import br.com.AlmSystem.model.Item;
 import br.com.AlmSystem.model.Produto;
 import br.com.AlmSystem.util.ConnectionFactory;
@@ -230,27 +229,30 @@ public class ItemDAOIpml implements GenericDAO {
     }
     //Denis  voce terar que carragar o  item  para realizar a retida não se esqueça 
 
-//    public Boolean SubtrairQuantidade(Object object) {
-//        Item item = (Item) object;
-//        PreparedStatement stmt = null;
-//        String sql = "UPDATE item SET  quantidade= quantidade - ? WHERE id_item= ?; ";
-//        try {
-//            stmt = conn.prepareStatement(sql);
-//            stmt.setInt(1, item.getSaldoItem());
-//            stmt.execute();
-//            return true;
-//        } catch (SQLException ex) {
-//            System.out.println("Problemas ao alterar ItemDAO! Erro: " + ex.getMessage());
-//            ex.printStackTrace();
-//            return false;
-//        } finally {
-//
-//            try {
-//                ConnectionFactory.closeConnection(conn, stmt);
-//            } catch (Exception ex) {
-//                System.out.println("Problemas ao fechar os parâmetros de conexão! Erro: " + ex.getMessage());
-//                ex.printStackTrace();
-//            }
-//        }
-//    }
+    public boolean SubtrairQuantidade(Object object) throws Exception {
+        Item item = (Item) object;
+        PreparedStatement stmt = null;
+        String sql = "UPDATE item SET  quantidade =  ? WHERE id_item= ?; ";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, item.getSaldoItem());
+            stmt.setInt(2, item.getIdItem()) ;     
+            stmt.executeUpdate();
+                        
+            return true ;
+
+        } catch (SQLException ex) {
+            System.out.println("Problemas ao alterar ItemDAO! Erro: " + ex.getMessage());
+            ex.printStackTrace();
+            return false;
+        } finally {
+
+            try {
+                ConnectionFactory.closeConnection(conn, stmt);
+            } catch (Exception ex) {
+                System.out.println("Problemas ao fechar os parâmetros de conexão! Erro: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+    }
 }

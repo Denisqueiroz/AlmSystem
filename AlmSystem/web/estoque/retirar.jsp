@@ -15,15 +15,33 @@
 
 <c:import url="../layout/header.jsp"/>
 
-<div class="layout-main">
-    <c:import url="../layout/menu.jsp"/> 
-
-    <section class="layout-content">
 
 
-    <div class="container">
+<section class="layout-content">
 
-            
-        </div>
+    <form action="${pageContext.request.contextPath}/RetirarSaldoItem"  method="POST" class="formulario"> 
+
+         <div class="container">
+            <div class="form-group col-md-3"> 
+                <label for="retirada">Codigo do Item</label>
+               <input type="number" class="form-control" id="idItem" 
+                                 readonly   name="idItem" value="${item.idItem}" />
+            </div>
         
+        
+        <div class="container">
+            <div class="form-group col-md-3"> 
+                <label for="retirada">Quantidade Dispónivel</label>
+               <input type="number" class="form-control" id="saldoItem" 
+                                 readonly   name="saldoItem" value="${item.saldoItem}" />
+            </div>
+                                          
+            <div class="form-group col-md-3"> 
+                <label for="retirada">Digite a Quantidade a ser Retirada</label>
+               <input type="number" class="form-control" id="saldoItem" 
+                                       name="retirada" value="" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+    </div>
+    </form>
 </section>

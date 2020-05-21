@@ -7,8 +7,6 @@ package br.com.AlmSystem.Controller;
 
 import br.com.AlmSystem.DAO.GenericDAO;
 import br.com.AlmSystem.DAO.ItemDAOIpml;
-import br.com.AlmSystem.DAO.ProdutoDAOImpl;
-import br.com.AlmSystem.DAO.UnidadeDAOImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,47 +18,47 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TBO-002
  */
-public class ListarEstoque extends HttpServlet {
+public class CarregarSaldoEstoque extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            int idProduto = Integer.parseInt(request.getParameter("idProduto"));
-         
-            ItemDAOIpml itemDAOIpml = new ItemDAOIpml();
             
-            GenericDAO dao = new ProdutoDAOImpl();
-            request.setAttribute("produto", dao.carregar(idProduto));
-                                              
-             
-            dao = new ItemDAOIpml();
-            request.setAttribute("items", dao.carregar(idProduto));
+          Integer idItem = Integer.parseInt(request.getParameter("idItem"));
             
-            
-            
-            request.setAttribute("item", itemDAOIpml.SomaQuantidade(idProduto));
-            request.getRequestDispatcher("estoque/listar.jsp").forward(request, response);
-        } catch (Exception ex) {
-            System.out.println("Problemas no Servlet a o listar Itens! Erro: " + ex.getMessage());
-            ex.printStackTrace();
+            try {
+                GenericDAO dao = new ItemDAOIpml();
+                request.setAttribute("item", dao.carregar(idItem));
+                request.getRequestDispatcher("estoque/retirar.jsp").forward(request, response);
+                
+            } catch (Exception ex) {
+                System.out.println("Problemas ao carregar dados do Fornecedor Erro: " + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
-
     }
 
-
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -74,7 +72,7 @@ public class ListarEstoque extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -85,7 +83,7 @@ public class ListarEstoque extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
