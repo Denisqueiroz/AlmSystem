@@ -34,13 +34,10 @@ public class Produto {
         this.descUnidade = descUnidade;
     }
 
-    public Produto(Integer idProduto,  String descricaoProduto ) {
-       this.idProduto = idProduto;
-       this.descricaoProduto = descricaoProduto;
+    public Produto(Integer idProduto, String descricaoProduto) {
+        this.idProduto = idProduto;
+        this.descricaoProduto = descricaoProduto;
     }
-    
-    
-    
 
     /**
      * @return the idProduto

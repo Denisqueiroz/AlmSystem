@@ -5,6 +5,7 @@
  */
 package br.com.AlmSystem.DAO;
 
+
 import br.com.AlmSystem.model.Item;
 import br.com.AlmSystem.model.Produto;
 import br.com.AlmSystem.util.ConnectionFactory;
@@ -42,7 +43,7 @@ public class ItemDAOIpml implements GenericDAO {
 
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, item.getSaldoItem());
+            stmt.setInt(1, item.getQuantidadeItem());
             stmt.setDate(2, new java.sql.Date(item.getDataCompraItem().getTime()));
             stmt.setDate(3, new java.sql.Date(item.getDataValidadeItem().getTime()));
             stmt.setInt(4, item.getProduto().getIdProduto());
@@ -80,7 +81,7 @@ public class ItemDAOIpml implements GenericDAO {
                 Item item = new Item();
 
                 item.setIdItem(rs.getInt("id_item"));
-                item.setSaldoItem(rs.getInt("quantidade"));
+                item.setQuantidadeItem(rs.getInt("quantidade"));
                 item.setDataCompraItem(rs.getDate("data_compra"));
                 item.setDataValidadeItem(rs.getDate("data_validade"));
                 item.setDataEntrada(rs.getDate("data_entrada"));
@@ -130,14 +131,19 @@ public class ItemDAOIpml implements GenericDAO {
     public Boolean alterar(Object object) throws Exception {
         Item item = (Item) object;
         PreparedStatement stmt = null;
-        String sql = " update item set  quantidade = ?,data_compra = ? "
-                + " data_vencimento = ? , id_prod = ?  where id_item=?;";
+        String sql = "UPDATE item SET  quantidade=?, data_compra=?, data_validade=?, id_prod=?,"
+                + " notafiscal=? WHERE id_item = ?;";
+
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, item.getSaldoItem());
+
+            stmt.setInt(1, item.getQuantidadeItem());
             stmt.setDate(2, new java.sql.Date(item.getDataCompraItem().getTime()));
             stmt.setDate(3, new java.sql.Date(item.getDataValidadeItem().getTime()));
             stmt.setInt(4, item.getProduto().getIdProduto());
+            stmt.setString(5, item.getNotafiscal());
+            stmt.setInt(6, item.getIdItem());
+
             stmt.execute();
 
             if (new ItemDAOIpml().alterar(item)) {
@@ -177,7 +183,7 @@ public class ItemDAOIpml implements GenericDAO {
 
                 item = new Item();
                 item.setIdItem(rs.getInt("id_item"));
-                item.setSaldoItem(rs.getInt("quantidade"));
+                item.setQuantidadeItem(rs.getInt("quantidade"));
                 item.setDataCompraItem(rs.getDate("data_compra"));
                 item.setDataValidadeItem(rs.getDate("data_validade"));
                 item.setProduto(new Produto(rs.getInt("id_prod")));
@@ -227,32 +233,32 @@ public class ItemDAOIpml implements GenericDAO {
         return item;
 
     }
-    //Denis  voce terar que carragar o  item  para realizar a retida não se esqueça 
 
-    public boolean SubtrairQuantidade(Object object) throws Exception {
-        Item item = (Item) object;
+    public void SubtrairQuantidade(int idItem, int retiradaItem) {
+      
         PreparedStatement stmt = null;
-        String sql = "UPDATE item SET  quantidade =  ? WHERE id_item= ?; ";
+        ResultSet rs = null;
+        String sql = " select retirar_quantidade(?, ?);";
+
         try {
             stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, item.getSaldoItem());
-            stmt.setInt(2, item.getIdItem()) ;     
-            stmt.executeUpdate();
-                        
-            return true ;
+            stmt.setInt(1, idItem);
+            stmt.setInt(2, retiradaItem);
+            rs = stmt.executeQuery();
 
         } catch (SQLException ex) {
-            System.out.println("Problemas ao alterar ItemDAO! Erro: " + ex.getMessage());
+            System.out.println("Problemas ao contar o Item! Erro: " + ex.getMessage());
             ex.printStackTrace();
-            return false;
         } finally {
-
             try {
-                ConnectionFactory.closeConnection(conn, stmt);
+                ConnectionFactory.closeConnection(conn, stmt, rs);
+
             } catch (Exception ex) {
-                System.out.println("Problemas ao fechar os parâmetros de conexão! Erro: " + ex.getMessage());
+                System.out.println("Problemas ao fechar os parâmentros de conexão:  ERRO " + ex.getMessage());
                 ex.printStackTrace();
             }
         }
+
     }
+
 }

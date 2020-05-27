@@ -9,11 +9,11 @@ package br.com.AlmSystem.model;
  *
  * @author Opa
  */
-public class Fornecedor  extends Pessoa {
-    
-    private Integer idFornecedor ;
-    private String cnpj ;
-    private String inscricaoEstadual ;
+public class Fornecedor extends Pessoa {
+
+    private Integer idFornecedor;
+    private String cnpj;
+    private String inscricaoEstadual;
 
     public Fornecedor() {
     }
@@ -23,12 +23,10 @@ public class Fornecedor  extends Pessoa {
     }
 
     public Fornecedor(Integer idFornecedor, String nomePessoa) {
-       this.idFornecedor = idFornecedor;
-       this.nomePessoa = nomePessoa ;
+        this.idFornecedor = idFornecedor;
+        this.nomePessoa = nomePessoa;
     }
 
-        
-       
     /**
      * @return the idFornecedor
      */
@@ -71,5 +69,4 @@ public class Fornecedor  extends Pessoa {
         this.inscricaoEstadual = inscricaoEstadual;
     }
 
-    
 }

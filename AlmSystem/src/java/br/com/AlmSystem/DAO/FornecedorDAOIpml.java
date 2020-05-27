@@ -168,7 +168,7 @@ public class FornecedorDAOIpml implements GenericDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Fornecedor fornecedor = null;
-       String sql = "select f.*,p.* from fornecedor f\n"
+        String sql = "select f.*,p.* from fornecedor f\n"
                 + "inner join pessoa p on p.id_pessoa = f.id_pessoa where f.id_forne = ? ";
         try {
             stmt = conn.prepareStatement(sql);
@@ -177,7 +177,7 @@ public class FornecedorDAOIpml implements GenericDAO {
             while (rs.next()) {
 
                 fornecedor = new Fornecedor();
-             
+
                 fornecedor.setIdFornecedor(rs.getInt("id_forne"));
                 fornecedor.setInscricaoEstadual(rs.getString("inscricao_social"));
                 fornecedor.setCnpj(rs.getString("cnpj"));

@@ -12,8 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -84,64 +82,42 @@ public class UsuarioDAOIpml implements GenericDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-//    public boolean verificaUsuario(Usuario usuario) throws Exception {
-//
-//        String sql = "select * from usuario where login = ? and senha = ? ";
-//
-//        try {
-//
-//            stmt = conn.prepareStatement(sql);
-//
-//            stmt.setString(1, usuario.getLoginUsuario());
-//            stmt.setString(2, usuario.getSenhaUsuario());
-//            ResultSet resultSet = stmt.executeQuery();
-//            if (resultSet.next()) {
-//                return true;
-//
-//            }
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(UsuarioDAOIpml.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//
-//            ConnectionFactory.closeConnection(conn, stmt);
-//
-//        }
-//        return false;
-//    }
-    //Método  criado para retorna  o usuario mas sem efeito não consegui aplicar a herança 
-    public Usuario getUsuario(String loginUsuario, String senhaUsuario) throws SQLException, Exception {
+    public Usuario logarUsuario(String email, String senha) {
 
-        String sql = "select * from usuario where login = ? and senha = ? ";
+        Usuario usuario = null;
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        String sql = "INSERT INTO usuario(login, senha) VALUES (? , ? ); ";
 
         try {
-
             stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            rs = stmt.executeQuery();
 
-            stmt.setString(1, loginUsuario);
-            stmt.setString(2, senhaUsuario);
-            ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setLoginUsuario(loginUsuario);
-                usuario.setSenhaUsuario(senhaUsuario);
-                //            usuario.setTipoPessoa(rs.getString("tipo"));
-//              usuario.setNomePessoa(rs.getString("nome"));
 
-                return usuario;
+                usuario = new Usuario();
+                usuario.setLoginUsuario(rs.getString("login"));
+                usuario.setSenhaUsuario(rs.getString("senha"));
+
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAOIpml.class.getName()).log(Level.SEVERE, null, ex);
-
+            System.out.println("Problemas ao logar Pessoa! Erro: " + ex.getMessage());
+            ex.printStackTrace();
         } finally {
-            ConnectionFactory.closeConnection(conn, stmt);
-            //  rs.close();
-            System.out.println("O conn está fechado ? = " + conn.isClosed());
-            System.out.println("O stmt está fechado ? = " + stmt.isClosed());
+            try {
+                ConnectionFactory.closeConnection(conn, stmt, rs);
+            } catch (Exception ex) {
+                System.out.println("Problemas ao fechar conexão! Erro: " + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
 
-        return null;
+        return usuario;
 
     }
+
 }

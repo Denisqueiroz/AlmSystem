@@ -34,21 +34,19 @@ public class CadastrarIntens extends HttpServlet {
 
         try (PrintWriter out = response.getWriter()) {
 
-         
+            Item item = new Item();
 
-                Item item = new Item();
+            item.setQuantidadeItem(Integer.parseInt(request.getParameter("saldoItem")));
+            item.setDataCompraItem(Conversoes.converterData(request.getParameter("dataCompraItem")));
+            item.setDataValidadeItem(Conversoes.converterData(request.getParameter("dataValidadeItem")));
 
-                item.setSaldoItem(Integer.parseInt(request.getParameter("saldoItem")));
-                item.setDataCompraItem(Conversoes.converterData(request.getParameter("dataCompraItem")));
-                item.setDataValidadeItem(Conversoes.converterData(request.getParameter("dataValidadeItem")));
+            Produto produto = new Produto();
+            produto.setIdProduto(Integer.parseInt(request.getParameter("idProduto")));
+            item.setProduto(produto);
 
-                Produto produto = new Produto();
-                produto.setIdProduto(Integer.parseInt(request.getParameter("idProduto")));
-                item.setProduto(produto);
-                
-                String mensagem = null;
-               try {
-                   
+            String mensagem = null;
+            try {
+
                 GenericDAO dao = new ItemDAOIpml();
                 if (request.getParameter("idItem").equals("")) {
                     if (dao.cadastrar(item)) {
@@ -56,7 +54,7 @@ public class CadastrarIntens extends HttpServlet {
                     } else {
                         mensagem = "Problemas aos cadastrat o item ";
                     }
-                } 
+                }
 
                 request.setAttribute("mensagem", mensagem);
                 request.getRequestDispatcher("ListarItens").forward(request, response);

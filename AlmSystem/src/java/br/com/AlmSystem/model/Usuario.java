@@ -24,7 +24,6 @@ public class Usuario extends Pessoa {
 //        }
 //        return false;
 //    }
-
     /**
      * @return the idUsuario
      */

@@ -33,14 +33,14 @@ public class CarregarSaldoEstoque extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-          Integer idItem = Integer.parseInt(request.getParameter("idItem"));
-            
+
+            Integer idItem = Integer.parseInt(request.getParameter("idItem"));
+
             try {
                 GenericDAO dao = new ItemDAOIpml();
                 request.setAttribute("item", dao.carregar(idItem));
                 request.getRequestDispatcher("estoque/retirar.jsp").forward(request, response);
-                
+
             } catch (Exception ex) {
                 System.out.println("Problemas ao carregar dados do Fornecedor Erro: " + ex.getMessage());
                 ex.printStackTrace();

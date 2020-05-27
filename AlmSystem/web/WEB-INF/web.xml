@@ -64,6 +64,14 @@
         <servlet-name>RetirarSaldoItem</servlet-name>
         <servlet-class>br.com.AlmSystem.Controller.RetirarSaldoItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarItem</servlet-name>
+        <servlet-class>br.com.AlmSystem.Controller.AlterarItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AtualizarItem</servlet-name>
+        <servlet-class>br.com.AlmSystem.Controller.AtualizarItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogarUsuario</servlet-name>
         <url-pattern>/LogarUsuario</url-pattern>
@@ -127,6 +135,14 @@
     <servlet-mapping>
         <servlet-name>RetirarSaldoItem</servlet-name>
         <url-pattern>/RetirarSaldoItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarItem</servlet-name>
+        <url-pattern>/AlterarItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AtualizarItem</servlet-name>
+        <url-pattern>/AtualizarItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

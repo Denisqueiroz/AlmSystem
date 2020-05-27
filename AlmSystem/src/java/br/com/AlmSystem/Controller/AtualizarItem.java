@@ -5,12 +5,12 @@
  */
 package br.com.AlmSystem.Controller;
 
-import br.com.AlmSystem.DAO.FornecedorDAOIpml;
 import br.com.AlmSystem.DAO.GenericDAO;
+import br.com.AlmSystem.DAO.ItemDAOIpml;
+import br.com.AlmSystem.model.Item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,29 +19,37 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TBO-002
  */
-@WebServlet(name = "ExcluirFornecedor", urlPatterns = {"/ExcluirFornecedor"})
-public class ExcluirFornecedor extends HttpServlet {
+public class AtualizarItem extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Integer idFornecedor = Integer.parseInt(request.getParameter("idFornecedor"));
 
-            String mensagem = "";
+            Item item = new Item();
+
+            item.setIdItem(Integer.parseInt(request.getParameter("idItem")));
+            item.setRetiradaItem(Integer.parseInt(request.getParameter("retiradaItem")));
+
+            String mensagem = null;
 
             try {
-                GenericDAO dao = new FornecedorDAOIpml();
-                dao.excluir(idFornecedor);
+
+                ItemDAOIpml dao = new ItemDAOIpml();
+
+                dao.SubtrairQuantidade(item.getIdItem(), item.getRetiradaItem());
+                mensagem = "Item  editado com sucesso";
                 request.setAttribute("mensagem", mensagem);
-                request.getRequestDispatcher("ListarFornecedor").forward(request, response);
+                request.getRequestDispatcher("ListarItens").forward(request, response);
             } catch (Exception ex) {
-                System.out.println("Problemas no Servelet ao excluir Fornecedor: Erro! " + ex.getMessage());
+                System.out.println("Problemas no Servlet ao alterar Produto! Erro: " + ex.getMessage());
+                ex.printStackTrace();
             }
         }
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

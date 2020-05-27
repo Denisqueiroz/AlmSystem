@@ -22,18 +22,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CarregarItem", urlPatterns = {"/CarregarItem"})
 public class CarregarItem extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           Integer idItens = Integer.parseInt(request.getParameter("idItens"));
-            
+            Integer idItens = Integer.parseInt(request.getParameter("idItens"));
+
             try {
                 GenericDAO dao = new ItemDAOIpml();
                 request.setAttribute("item", dao.carregar(idItens));
                 request.getRequestDispatcher("itens/salvar.jsp").forward(request, response);
-                
+
             } catch (Exception ex) {
                 System.out.println("Problemas ao carregar dados do Fornecedor Erro: " + ex.getMessage());
                 ex.printStackTrace();

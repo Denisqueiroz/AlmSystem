@@ -21,10 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Sair", urlPatterns = {"/Sair"})
 public class Sair extends HttpServlet {
 
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         request.getSession().invalidate();
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         rd.forward(request, response);

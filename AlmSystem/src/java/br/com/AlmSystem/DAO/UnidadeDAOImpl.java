@@ -32,17 +32,17 @@ public class UnidadeDAOImpl implements GenericDAO {
     }
 
     @Override
-    public Boolean cadastrar(Object object)  {
-         Unidade unidade = (Unidade) object ; 
+    public Boolean cadastrar(Object object) {
+        Unidade unidade = (Unidade) object;
         PreparedStatement stmt = null;
 
         String sql = "insert into unidade (descricao_uni)"
                 + " values (?)";
-               
-         try {
+
+        try {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, unidade.getDescUnidade());
-           
+
             stmt.execute();
             return true;
         } catch (Exception e) {
@@ -58,8 +58,8 @@ public class UnidadeDAOImpl implements GenericDAO {
     }
 
     @Override
-     public List<Object> listar() throws Exception {
-       List<Object> unidades = new ArrayList<>();
+    public List<Object> listar() throws Exception {
+        List<Object> unidades = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
         String sql = "SELECT * FROM unidade order by descricao_uni ;";
@@ -101,7 +101,7 @@ public class UnidadeDAOImpl implements GenericDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Unidade unidade = null;
-         String sql = "select  * from unidade where id_uni = ?" ;
+        String sql = "select  * from unidade where id_uni = ?";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -123,8 +123,7 @@ public class UnidadeDAOImpl implements GenericDAO {
             }
         }
         return unidade;
-    
-    
+
     }
 
 }

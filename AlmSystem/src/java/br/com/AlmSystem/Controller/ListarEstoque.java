@@ -28,18 +28,15 @@ public class ListarEstoque extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             int idProduto = Integer.parseInt(request.getParameter("idProduto"));
-         
+
             ItemDAOIpml itemDAOIpml = new ItemDAOIpml();
-            
+
             GenericDAO dao = new ProdutoDAOImpl();
             request.setAttribute("produto", dao.carregar(idProduto));
-                                              
-             
+
             dao = new ItemDAOIpml();
             request.setAttribute("items", dao.carregar(idProduto));
-            
-            
-            
+
             request.setAttribute("item", itemDAOIpml.SomaQuantidade(idProduto));
             request.getRequestDispatcher("estoque/listar.jsp").forward(request, response);
         } catch (Exception ex) {
@@ -49,18 +46,17 @@ public class ListarEstoque extends HttpServlet {
 
     }
 
-
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -74,7 +70,7 @@ public class ListarEstoque extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-        protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -85,7 +81,7 @@ public class ListarEstoque extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-        public String getServletInfo() {
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

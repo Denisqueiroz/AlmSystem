@@ -19,38 +19,32 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TBO-002
  */
-public class RetirarSaldoItem extends HttpServlet {
+public class AlterarItem extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            Item item = new Item();
 
-     item.setIdItem(Integer.parseInt(request.getParameter("idItem")));
-     item.setSaldoItem(Integer.parseInt(request.getParameter("saldoItem"))- Integer.parseInt(request.getParameter("saldoItem")));
-                   
-           
-            Integer retirada ;
-            
-            String mensagem = null;
+        Item item = new Item();
 
-            try {
-                                           
-                
-                ItemDAOIpml itemDAOIpml = new ItemDAOIpml();
-                if (itemDAOIpml.SubtrairQuantidade(item)) {
-                    mensagem = "Produto retirado com sucesso";
+        item.setIdItem(Integer.parseInt(request.getParameter("idItem")));
+        item.setQuantidadeItem(Integer.parseInt(request.getParameter("quantidadeItem")));
+        String mensagem = null;
 
-                } else {
-                    mensagem = "Problemas ao retirar item";
-                }
-                request.setAttribute("mensagem", mensagem);
-                request.getRequestDispatcher("ListarEstoque").forward(request, response);
-            } catch (Exception ex) {
-                System.out.println("Problemas no Servlet ao retirar Item! Erro: " + ex.getMessage());
-                ex.printStackTrace();
+        try {
+
+            GenericDAO dao = new ItemDAOIpml();
+            if (dao.alterar(item)) {
+                mensagem = "Item para teste editado com sucesso";
+
+            } else {
+                mensagem = "Problemas ao editar Item teste";
             }
+            request.setAttribute("mensagem", mensagem);
+            request.getRequestDispatcher("ListarItens").forward(request, response);
+        } catch (Exception ex) {
+            System.out.println("Problemas no Servlet ao alterar saldo do item! Erro: " + ex.getMessage());
+            ex.printStackTrace();
         }
     }
 

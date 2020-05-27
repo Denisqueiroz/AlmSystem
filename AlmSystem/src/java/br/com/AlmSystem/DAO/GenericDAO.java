@@ -5,6 +5,7 @@
  */
 package br.com.AlmSystem.DAO;
 
+import br.com.AlmSystem.model.Item;
 import java.util.List;
 
 /**
@@ -12,12 +13,20 @@ import java.util.List;
  * @author Suporte
  */
 public interface GenericDAO {
-    
-    public Boolean cadastrar(Object object) throws Exception ;;
-    public List<Object> listar() throws Exception;;
-    public Boolean excluir(int idObject) throws Exception;;
-    public Boolean alterar(Object object) throws Exception;;
-    public Object carregar(int idObject) throws Exception;;
 
-      
+    public Boolean cadastrar(Object object) throws Exception;
+
+    ;
+    public List<Object> listar() throws Exception;
+
+    ;
+    public Boolean excluir(int idObject) throws Exception;
+
+    ;
+    public Boolean alterar(Object object) throws Exception;
+
+    ;
+    public Object carregar(int idObject) throws Exception;
+;
+
 }

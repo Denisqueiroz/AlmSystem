@@ -34,8 +34,8 @@
                     <thead>
                         <tr>
                             <th>Codigo Produto</th>
-                            <th> Descrição Produto</th>
                             <th>Codigo Item</th>
+                            <th> Descrição Produto</th>
                             <th>Quantidade</th>
                             <th>Data da Compra</th>
                             <th>Validade do Produto</th>
@@ -51,17 +51,17 @@
 
                             <tr>
                                 <td >${item.produto.idProduto}</td>
-                                <td >${item.produto.descricaoProduto}</td>
                                 <td >${item.idItem}</td>
-                                <td >${item.saldoItem}</td>
+                                <td >${item.produto.descricaoProduto}</td>
+                                <td >${item.quantidadeItem}</td>
                                 <td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${item.dataValidadeItem}"></fmt:formatDate></td>
                                 <td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${item.dataCompraItem}"></fmt:formatDate></td>
                                 <td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${item.dataEntrada}"></fmt:formatDate></td>
                                 <td><a href="${item.notafiscal}" title="Baixar Nota" target="blank">Nota Fiscal</a></td>
 
 
-                           <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
-                           <td><a href="CarregarSaldoEstoque?idItem=${item.idItem}"><button>Retirar Produto</button></a></td> 
+                                <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
+                                <td><a href="CarregarSaldoEstoque?idItem=${item.idItem}"><button>Retirar Produto</button></a></td> 
                             </tr>
                         </c:forEach>
 

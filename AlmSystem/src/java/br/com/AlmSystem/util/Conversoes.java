@@ -14,15 +14,15 @@ import java.util.Date;
  * @author TBO-002
  */
 public class Conversoes {
-    
+
     public static Date converterData(String data) throws ParseException {
         if (!data.trim().equals("") || !data.equals("")) {
-              SimpleDateFormat fmt = new SimpleDateFormat("yyyy/MM/dd");
+            SimpleDateFormat fmt = new SimpleDateFormat("yyyy/MM/dd");
             Date date = fmt.parse(data);
             return date;
         } else {
             return null;
-        }                
+        }
     }
-    
+
 }

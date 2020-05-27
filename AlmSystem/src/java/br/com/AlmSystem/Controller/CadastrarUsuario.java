@@ -5,7 +5,6 @@
  */
 package br.com.AlmSystem.Controller;
 
-
 import br.com.AlmSystem.DAO.GenericDAO;
 import br.com.AlmSystem.DAO.UsuarioDAOIpml;
 import br.com.AlmSystem.model.Usuario;
@@ -24,13 +23,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CadastrarUsuario", urlPatterns = {"/CadastrarUsuario"})
 public class CadastrarUsuario extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
+
             String login = request.getParameter("login");
             String senha = request.getParameter("senha");
 
@@ -49,7 +46,7 @@ public class CadastrarUsuario extends HttpServlet {
 
             String uf = request.getParameter("uf");
             String pais = request.getParameter("pais");
-            
+
             String mensagem = null;
 
             Usuario usuario = new Usuario();
@@ -66,8 +63,7 @@ public class CadastrarUsuario extends HttpServlet {
             usuario.setNumeroPessoa(numero);
             usuario.setUfPessoa(uf);
             usuario.setPaisPessoa(pais);
-            
-            
+
             try {
                 GenericDAO dao = new UsuarioDAOIpml();
                 if (dao.cadastrar(usuario)) {
@@ -83,8 +79,6 @@ public class CadastrarUsuario extends HttpServlet {
             }
         }
     }
-
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

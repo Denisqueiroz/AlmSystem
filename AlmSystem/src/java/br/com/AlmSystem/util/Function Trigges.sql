@@ -17,7 +17,7 @@ execute procedure data_entrada() ;
 
 
 -----function movimentação de estoque--------------
-
+---essa function funciona somenbte de exmplo
 create  or REPLACE  FUNCTION iserir_saldo() 
 returns trigger  AS $$
 
@@ -26,15 +26,25 @@ BEGIN
   UPDATE item  set quantidade = quantidade + saldo
   from estoque
   where estoque.id_item = item.id_item  ;
-
+  end ;
 $$ LANGUAGE plpgsql;
 
 
 -----------trigges-------------------
 
-create trigger iserir_saldos
-before insert 
-on item
-for each row
-execute procedure iserir_saldo() ;
+DROP FUNCTION retirar_quantidade(INTEGER, INTEGER);
 
+create  or REPLACE  FUNCTION retirar_quantidade(id integer, quant integer) 
+returns text  AS $$
+BEGIN
+  UPDATE item  set quantidade = quantidade - quant  where id_item = id  ;
+     return null ;
+end ;
+$$ LANGUAGE plpgsql;
+
+ ----------------trigger--------------
+create trigger retirar_quantidade
+before update
+on item
+for each row when(pg_trigger_depth()= 0)
+execute procedure retirar_quantidade()  

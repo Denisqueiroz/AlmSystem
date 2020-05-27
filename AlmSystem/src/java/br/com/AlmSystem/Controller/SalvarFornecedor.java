@@ -23,15 +23,14 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "SalvarFornecedor", urlPatterns = {"/SalvarFornecedor"})
 public class SalvarFornecedor extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-             String mensagem = "";
+            String mensagem = "";
 
             try {
-                
+
                 Fornecedor fornecedor = new Fornecedor();
                 fornecedor.setInscricaoEstadual(request.getParameter("inscricaoEstadual"));
                 fornecedor.setCnpj(request.getParameter("cnpj"));
@@ -47,7 +46,6 @@ public class SalvarFornecedor extends HttpServlet {
                 fornecedor.setBairroPessoa(request.getParameter("bairroPessoa"));
                 fornecedor.setUfPessoa(request.getParameter("ufPessoa"));
                 fornecedor.setPaisPessoa(request.getParameter("paisPessoa"));
-               
 
                 GenericDAO dao = new FornecedorDAOIpml();
                 if (request.getParameter("idFornecedor").equals("")) {
@@ -56,7 +54,7 @@ public class SalvarFornecedor extends HttpServlet {
                     } else {
                         mensagem = "Problemas aos cadastrat o Fornecedor ";
                     }
-               } else {
+                } else {
                     fornecedor.setIdFornecedor(Integer.parseInt((request.getParameter("idFornecedor"))));
 
                     if (dao.alterar(fornecedor)) {

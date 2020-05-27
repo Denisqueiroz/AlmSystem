@@ -22,19 +22,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CarregarFornecedor", urlPatterns = {"/CarregarFornecedor"})
 public class CarregarFornecedor extends HttpServlet {
 
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-           Integer idFornecedor = Integer.parseInt(request.getParameter("idFornecedor"));
-            
+
+            Integer idFornecedor = Integer.parseInt(request.getParameter("idFornecedor"));
+
             try {
                 GenericDAO dao = new FornecedorDAOIpml();
                 request.setAttribute("fornecedor", dao.carregar(idFornecedor));
                 request.getRequestDispatcher("fornecedor/cadastrar.jsp").forward(request, response);
-                
+
             } catch (Exception ex) {
                 System.out.println("Problemas ao carregar dados do Fornecedor Erro: " + ex.getMessage());
                 ex.printStackTrace();

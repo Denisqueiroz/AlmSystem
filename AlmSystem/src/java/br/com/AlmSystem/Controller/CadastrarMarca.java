@@ -23,24 +23,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "CadastrarMarca", urlPatterns = {"/CadastrarMarca"})
 public class CadastrarMarca extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=ISO-8859-1");
         try (PrintWriter out = response.getWriter()) {
-           
-       String nomemarca = request.getParameter("nomemarca"); 
-       String mensagem = null;
-        
-       Marca marca =  new Marca() ;
-        
-        marca.setNomeMarca(nomemarca);
-            
-         try {
+
+            String nomemarca = request.getParameter("nomemarca");
+            String mensagem = null;
+
+            Marca marca = new Marca();
+
+            marca.setNomeMarca(nomemarca);
+
+            try {
                 GenericDAO dao = new MarcaDAOIpml();
-                if(dao.cadastrar(marca)){
+                if (dao.cadastrar(marca)) {
                     mensagem = "Tipo do Marca cadastrado com sucesso";
-                }else{
+                } else {
                     mensagem = "Problemas ao cadastrar a Marca Servelt";
                 }
                 request.setAttribute("mensagem", mensagem);
@@ -89,7 +88,5 @@ public class CadastrarMarca extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-  
 
 }

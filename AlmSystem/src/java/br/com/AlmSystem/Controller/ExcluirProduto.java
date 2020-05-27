@@ -20,23 +20,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ExcluirProduto extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
-           
-           String mensagem = "";
-           
-           try{
-               GenericDAO dao = new ProdutoDAOImpl();
-               dao.excluir(idProduto);
-               request.setAttribute("mensagem", mensagem);
-               request.getRequestDispatcher("ListarProduto").forward(request, response);
-           }catch(Exception ex){
-               System.out.println("Problemas no Servelet ao excluir Produto: Erro! " + ex.getMessage());
-           }
+            Integer idProduto = Integer.parseInt(request.getParameter("idProduto"));
+
+            String mensagem = "";
+
+            try {
+                GenericDAO dao = new ProdutoDAOImpl();
+                dao.excluir(idProduto);
+                request.setAttribute("mensagem", mensagem);
+                request.getRequestDispatcher("ListarProduto").forward(request, response);
+            } catch (Exception ex) {
+                System.out.println("Problemas no Servelet ao excluir Produto: Erro! " + ex.getMessage());
+            }
         }
     }
 

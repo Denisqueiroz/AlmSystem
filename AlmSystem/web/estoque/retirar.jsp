@@ -19,29 +19,30 @@
 
 <section class="layout-content">
 
-    <form action="${pageContext.request.contextPath}/RetirarSaldoItem"  method="POST" class="formulario"> 
+    <form action="${pageContext.request.contextPath}/AtualizarItem"  method="POST" class="formulario"> 
 
-         <div class="container">
-            <div class="form-group col-md-3"> 
-                <label for="retirada">Codigo do Item</label>
-               <input type="number" class="form-control" id="idItem" 
-                                 readonly   name="idItem" value="${item.idItem}" />
-            </div>
-        
-        
         <div class="container">
             <div class="form-group col-md-3"> 
-                <label for="retirada">Quantidade Dispónivel</label>
-               <input type="number" class="form-control" id="saldoItem" 
-                                 readonly   name="saldoItem" value="${item.saldoItem}" />
+                <label for="retirada">Codigo do Item</label>
+                <input type="number" class="form-control" id="idItem" 
+                       readonly   name="idItem" value="${item.idItem}" />
             </div>
-                                          
-            <div class="form-group col-md-3"> 
-                <label for="retirada">Digite a Quantidade a ser Retirada</label>
-               <input type="number" class="form-control" id="saldoItem" 
-                                       name="retirada" value="" />
+
+
+            <div class="container">
+                <div class="form-group col-md-3"> 
+                    <label for="retirada">Quantidade Dispónivel</label>
+                    <input type="number" class="form-control" id="saldoItem" 
+                           readonly   name="quantidadeItem" value="${item.quantidadeItem}" />
+                </div>
+
+                <div class="form-group col-md-3"> 
+                    <label for="retiradaItem">Digite a Quantidade a ser Retirada</label>
+                    <input type="number" class="form-control" id="retiradaItem" 
+                           name="retiradaItem" value="" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
             </div>
-            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-    </div>
     </form>
+</div>
 </section>

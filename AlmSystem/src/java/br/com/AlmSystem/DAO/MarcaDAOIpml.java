@@ -5,7 +5,6 @@
  */
 package br.com.AlmSystem.DAO;
 
-
 import br.com.AlmSystem.model.Marca;
 import br.com.AlmSystem.util.ConnectionFactory;
 import java.sql.Connection;
@@ -34,16 +33,16 @@ public class MarcaDAOIpml implements GenericDAO {
 
     @Override
     public Boolean cadastrar(Object object) {
-        Marca marca = (Marca) object ; 
+        Marca marca = (Marca) object;
         PreparedStatement stmt = null;
 
         String sql = "insert into marca (nome_marca )"
                 + " values (?)";
-               
-         try {
+
+        try {
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, marca.getNomeMarca());
-           
+
             stmt.execute();
             return true;
         } catch (Exception e) {
@@ -57,7 +56,7 @@ public class MarcaDAOIpml implements GenericDAO {
                 ex.printStackTrace();
             }
         }
-        
+
     }
 
     @Override

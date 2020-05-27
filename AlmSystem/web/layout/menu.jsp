@@ -54,7 +54,7 @@
             <ul class="nav nav-pills">
                 <li class="nav-item"><span class="nav-link active" >Movimentação</span></li>
                 <li class="nav-item"><a class="nav-link" 
-                href="${pageContext.request.contextPath}/DadosItens"> <i class="oi oi-plus"></i> <span>Cadastrar Item</span>
+                                        href="${pageContext.request.contextPath}/DadosItens"> <i class="oi oi-plus"></i> <span>Cadastrar Item</span>
                     </a></li>
                 <li class="nav-item"><a class="nav-link" 
                                         href="${pageContext.request.contextPath}/ListarItens"> <i
@@ -64,9 +64,9 @@
                                         href="${pageContext.request.contextPath}/ListarEstoque"> <i
                             class="oi oi-spreadsheet"></i> <span>Estoque Item</span>
                     </a></li>
-                 
+
             </ul>   
-                            
+
 
 
         </nav>

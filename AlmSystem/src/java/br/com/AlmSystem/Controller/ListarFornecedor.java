@@ -36,15 +36,15 @@ public class ListarFornecedor extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String mensagem = "";
-             
-             GenericDAO dao = new FornecedorDAOIpml();
-             request.setAttribute("fornecedores", dao.listar());
-             request.getRequestDispatcher("fornecedor/listar.jsp").forward(request, response);
-            } catch (Exception ex) {
-                System.out.println("Problemas no Servlet a o listar Fornecedor! Erro: " + ex.getMessage());
-                ex.printStackTrace();
-            }
-        
+
+            GenericDAO dao = new FornecedorDAOIpml();
+            request.setAttribute("fornecedores", dao.listar());
+            request.getRequestDispatcher("fornecedor/listar.jsp").forward(request, response);
+        } catch (Exception ex) {
+            System.out.println("Problemas no Servlet a o listar Fornecedor! Erro: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

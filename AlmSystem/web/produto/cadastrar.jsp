@@ -60,8 +60,8 @@
                                     <div class="invalid-feedback">
                                     </div>
                                 </div>
-                         
-                     
+
+
                                 <div class="form-group col-md-8">
                                     <label for="descricaoProduto">Descrição do Produto</label>
                                     <input type="text" class="form-control" id="nome" placeholder="Digite a descrição"
@@ -121,7 +121,7 @@
             </section>
 
         </div>
-   
+
 
 
         <!-- Bootstrap core JavaScript

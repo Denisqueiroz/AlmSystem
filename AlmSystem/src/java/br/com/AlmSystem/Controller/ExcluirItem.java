@@ -21,23 +21,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ExcluirItem extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Integer idItem = Integer.parseInt(request.getParameter("idItem"));
-           
-           String mensagem = "";
-           
-           try{
-               GenericDAO dao = new ItemDAOIpml();
-               dao.excluir(idItem);
-               request.setAttribute("mensagem", mensagem);
-               request.getRequestDispatcher("ListarItens").forward(request, response);
-           }catch(Exception ex){
-               System.out.println("Problemas no Servelet ao excluir Item: Erro! " + ex.getMessage());
-           }
+
+            String mensagem = "";
+
+            try {
+                GenericDAO dao = new ItemDAOIpml();
+                dao.excluir(idItem);
+                request.setAttribute("mensagem", mensagem);
+                request.getRequestDispatcher("ListarItens").forward(request, response);
+            } catch (Exception ex) {
+                System.out.println("Problemas no Servelet ao excluir Item: Erro! " + ex.getMessage());
+            }
         }
     }
 

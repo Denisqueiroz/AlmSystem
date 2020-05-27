@@ -22,12 +22,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ListarUnidade", urlPatterns = {"/ListarUnidade"})
 public class ListarUnidade extends HttpServlet {
 
-   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=ISO-8859-1");
         try (PrintWriter out = response.getWriter()) {
-          try {                      
+            try {
                 GenericDAO dao = new UnidadeDAOImpl();
                 request.setAttribute("produtos", dao.listar());
                 request.getRequestDispatcher("produto/listarproduto.jsp").forward(request, response);

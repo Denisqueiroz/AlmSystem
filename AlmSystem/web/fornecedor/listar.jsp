@@ -70,7 +70,7 @@
                                         <td >${fornecedor.emailPessoa}</td>
                                         <td >${fornecedor.telefonePessoa}</td>
 
-                                        
+
                                         <td><a href="ExcluirFornecedor?idFornecedor=${fornecedor.idFornecedor}"><button>Excluir</button></a></td>
                                         <td><a href="CarregarFornecedor?idFornecedor=${fornecedor.idFornecedor}"><button>Alterar</button></a></td>
                                     </tr>
@@ -92,7 +92,7 @@
 
         </div>
 
-  
+
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

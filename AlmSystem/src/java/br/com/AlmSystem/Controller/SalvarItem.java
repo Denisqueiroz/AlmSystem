@@ -57,7 +57,7 @@ public class SalvarItem extends HttpServlet {
                 FileItem fileItem = (FileItem) it.next();
                 if (!fileItem.isFormField()) {
                     try {
-          fileItem.write(new File("C:\\Users\\TBO-002\\OneDrive - Fatec Centro Paula Souza\\Arquivos Variados\\Documents\\GitHub\\AlmSystem\\AlmSystem\\web\\notasfiscais" + (new File(fileItem.getName())).getName()));
+                        fileItem.write(new File("C:\\Users\\TBO-002\\OneDrive-FatecCentroPaulaSouza\\ArquivosVariados\\Documents\\GitHub\\AlmSystem\\AlmSystem\\web\\notasfiscais" + (new File(fileItem.getName())).getName()));
                     } catch (Exception ex) {
                         System.out.println("Problemas ao pegar o nome do arquivo! Erro:" + ex.getMessage());
                         ex.printStackTrace();
@@ -67,12 +67,10 @@ public class SalvarItem extends HttpServlet {
                     item.setNotafiscal("notafiscal/" + fileItem.getName());
                     System.out.println("O arquivo enviado foi: " + item.getNotafiscal() + "e o seu tamanho é de: " + fileItem.getSize() + "bytes!");
 
-                   
-                    
                 } else {
                     String dados = fileItem.getFieldName();
-                    if (dados.equals("saldoItem")) {
-                        item.setSaldoItem(Integer.parseInt(fileItem.getString()));
+                    if (dados.equals("quantidadeItem")) {
+                        item.setQuantidadeItem(Integer.parseInt(fileItem.getString()));
                     } else if (dados.equals("dataCompraItem")) {
                         item.setDataCompraItem(Conversoes.converterData(fileItem.getString().replace("-", "/")));
                     } else if (dados.equals("dataValidadeItem")) {
@@ -85,7 +83,7 @@ public class SalvarItem extends HttpServlet {
         }
 
         String mensagem = null;
-        //   item.setTipoPessoa("F");
+       
         try {
             GenericDAO dao = new ItemDAOIpml();
             if (dao.cadastrar(item)) {

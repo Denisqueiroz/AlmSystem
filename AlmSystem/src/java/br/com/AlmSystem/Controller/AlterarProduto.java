@@ -41,7 +41,6 @@ public class AlterarProduto extends HttpServlet {
 
         produto.setIdProduto(Integer.parseInt(request.getParameter("idProduto")));
         produto.setDescricaoProduto(request.getParameter("descri"));
-        
 
         Unidade unidade = new Unidade();
         Integer idUnidade = Integer.parseInt(request.getParameter("idUnidade"));
@@ -52,8 +51,8 @@ public class AlterarProduto extends HttpServlet {
         Fornecedor fornecedor = new Fornecedor();
         Integer idFornecedor = Integer.parseInt(request.getParameter("idFornecedor"));
 
-         String mensagem = null;
-          
+        String mensagem = null;
+
         try {
 
             GenericDAO dao = new ProdutoDAOImpl();

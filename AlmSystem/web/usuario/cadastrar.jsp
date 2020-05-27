@@ -57,7 +57,7 @@
                 <div class="container" id="cadastro">
                     <form  action="${pageContext.request.contextPath}/CadastrarUsuario" method="POST">
                         <p class="text-center text-uppercase">${mensagem}</p>
-                  
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="nome">Nome Usuário</label>
@@ -67,7 +67,7 @@
 
                                 </div>
                             </div>
-                        <div class="form-group col-md-6">
+                            <div class="form-group col-md-6">
                                 <label for="salario">Tipo de Usuário</label>
                                 <input type="text" class="form-control" id="salario" 
                                        name="tipo" />
@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                         </div>
-                          <div class="form-row">
+                        <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="nome">Login</label>
                                 <input type="text" class="form-control" id="nome" placeholder="Crie um login de usuário"
@@ -114,10 +114,10 @@
 
                                 </div>
                             </div>
-                                  <div class="form-group col-md-4">
+                            <div class="form-group col-md-4">
                                 <label for="senha">Confirma Senha</label>
-<!--                                <input type="password" placeholder="Confirma a senha" class="form-control" id="salario" /> -->
-                                      
+                                <!--                                <input type="password" placeholder="Confirma a senha" class="form-control" id="salario" /> -->
+
                                 <div class="invalid-feedback">
 
                                 </div>
@@ -127,8 +127,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="cep">Cep</label>
-     <input  placeholder="Apenas números" class="form-control input-md" required="" 
-              name="cep"  id="cep" value="" type="search" maxlength="8" pattern="[0-9]+$" onblur="pesquisacep(this.value);" >
+                                <input  placeholder="Apenas números" class="form-control input-md" required="" 
+                                        name="cep"  id="cep" value="" type="search" maxlength="8" pattern="[0-9]+$" onblur="pesquisacep(this.value);" >
 
                             </div>
 
@@ -190,8 +190,8 @@
             </section>
         </div>
 
-        
-       
+
+
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

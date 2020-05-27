@@ -19,7 +19,7 @@
             <section class="layout-content">
 
                 <div class="container" id="cadastro">
-   <form action="${pageContext.request.contextPath}/SalvarItem"  method="POST" enctype="multipart/form-data"  class="formulario"> 
+                    <form action="${pageContext.request.contextPath}/SalvarItem"  method="POST" enctype="multipart/form-data"  class="formulario"> 
                         <p class="text-center text-uppercase">${mensagem}</p>
                         <div class="form-row">
                             <div  class="form-group col-md-2" >
@@ -41,9 +41,9 @@
                             </div>    
 
                             <div class="form-group col-md-2">
-                                <label for="saldoItem"> Inserir Quantidade </label>
+                                <label for="quantidadeItem"> Inserir Quantidade </label>
                                 <input type="number" class="form-control" id="saldoItem" 
-                                       name="saldoItem" value="${item.saldoItem}" />
+                                       name="quantidadeItem" value="${item.quantidadeItem}" />
                                 <div class="invalid-feedback">
 
                                 </div>
@@ -51,9 +51,9 @@
 
                             <div class="form-group col-md-3"> 
                                 <label for="dataCompraItem">Data da Compra</label>
-            <input type="date" class="form-control" id="dataCompraItem" 
-          autofocus="autofocus" name="dataCompraItem" value="${item.dataCompraItem}"/>
-            <div class="invalid-feedback">
+                                <input type="date" class="form-control" id="dataCompraItem" 
+                                       autofocus="autofocus" name="dataCompraItem" value="${item.dataCompraItem}"/>
+                                <div class="invalid-feedback">
 
                                 </div>
                             </div>
@@ -67,18 +67,18 @@
                                 </div>
                             </div>
 
-                   <label for="notafiscai">Nota Fiscal: </label><input type="file" value="${item.notafiscal}" 
-                    name="notafiscal" id="notafiscal" placeholder="Nota Fiscal" /><br />     
-                                
-                                
-                                
+                            <label for="notafiscai">Nota Fiscal: </label><input type="file" value="${item.notafiscal}" 
+                                                                                name="notafiscal" id="notafiscal" placeholder="Nota Fiscal" /><br />     
+
+
+
                         </div>
                         <div class="form-row">
                             <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 
                         </div>
-                                
-                 
+
+
 
                     </form>
 

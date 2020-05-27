@@ -14,14 +14,14 @@ import java.util.Date;
 public class Item {
 
     private Integer idItem;
-    private Integer saldoItem;
+    private Integer quantidadeItem;
     private Date dataValidadeItem;
     private Date dataCompraItem;
-    private Date dataEntrada ;
+    private Date dataEntrada;
     private String notafiscal;
     private Integer totalItem;
-    private Integer retirada;
     private Produto produto;
+    private Integer retiradaItem ;
 
     public Item() {
     }
@@ -31,9 +31,6 @@ public class Item {
         this.produto = produto;
     }
 
-    
-    
-    
     /**
      * @return the idItem
      */
@@ -49,17 +46,17 @@ public class Item {
     }
 
     /**
-     * @return the saldoItem
+     * @return the quantidadeItem
      */
-    public Integer getSaldoItem() {
-        return saldoItem;
+    public Integer getQuantidadeItem() {
+        return quantidadeItem;
     }
 
     /**
-     * @param saldoItem the saldoItem to set
+     * @param quantidadeItem the quantidadeItem to set
      */
-    public void setSaldoItem(Integer saldoItem) {
-        this.saldoItem = saldoItem;
+    public void setQuantidadeItem(Integer quantidadeItem) {
+        this.quantidadeItem = quantidadeItem;
     }
 
     /**
@@ -147,18 +144,20 @@ public class Item {
     }
 
     /**
-     * @return the retirada
+     * @return the retiradaItem
      */
-    public Integer getRetirada() {
-        return retirada;
+    public Integer getRetiradaItem() {
+        return retiradaItem;
     }
 
     /**
-     * @param retirada the retirada to set
+     * @param retiradaItem the retiradaItem to set
      */
-    public void setRetirada(Integer retirada) {
-        this.retirada = retirada;
+    public void setRetiradaItem(Integer retiradaItem) {
+        this.retiradaItem = retiradaItem;
     }
 
-    
+    /**
+     * @return the retirada
+     */
 }

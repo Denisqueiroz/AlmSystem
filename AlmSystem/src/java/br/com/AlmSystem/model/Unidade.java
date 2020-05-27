@@ -26,8 +26,6 @@ public class Unidade {
         this.descUnidade = descUnidade;
     }
 
-    
-
     public Integer getIdUnidade() {
         return idUnidade;
     }
@@ -43,7 +41,5 @@ public class Unidade {
     public void setDescUnidade(String descUnidade) {
         this.descUnidade = descUnidade;
     }
-
-   
 
 }

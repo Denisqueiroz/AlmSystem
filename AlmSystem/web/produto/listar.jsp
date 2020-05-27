@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-    
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="${pageContext.request.contextPath}/vendor/style.css" rel="stylesheet" type="text/css"/>
@@ -34,7 +34,7 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
                                 <i class="oi oi-caret-right"></i>
-                              
+
                             </li>
                         </ul>
                     </div>
@@ -46,42 +46,42 @@
 
                 <div class="container" id="listagem">
                     <div class="table-responsive">
-                     
-                 <table class="table  table-striped">
-                    <thead class="thead-warning">
-                        <tr>
+
+                        <table class="table  table-striped">
+                            <thead class="thead-warning">
+                                <tr>
                                     <td>Codigo</td>
                                     <td>Descricao</td>
                                     <td>Unidade</td>
                                     <td>Marca</td>
                                     <td>Fornecedor</td>
-                                
+
                                     <td>Ação</td>
                                     <td>Ação</td>
-                        </tr>
-                    </thead>
-                   <tbody>
-                        <c:forEach var="produto" items="${produtos}">
-                            <tr>
-                                <td>${produto.idProduto}</td>
-                                <td>${produto.descricaoProduto}</td>
-                                <td>${produto.unidade.descUnidade}</td>
-                                <td>${produto.marca.nomeMarca}</td>
-                                <td>${produto.fornecedor.nomePessoa}</td>
-                               
-                                
-                                
-                                <td><a href="ExcluirProduto?idProduto=${produto.idProduto}"><button>Excluir</button></a></td>
-                                <td><a href=" CarregaProduto?idProduto=${produto.idProduto}"><button>Alterar</button></a></td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-                        
-                        
-                        
-                        
-                        
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:forEach var="produto" items="${produtos}">
+                                    <tr>
+                                        <td>${produto.idProduto}</td>
+                                        <td>${produto.descricaoProduto}</td>
+                                        <td>${produto.unidade.descUnidade}</td>
+                                        <td>${produto.marca.nomeMarca}</td>
+                                        <td>${produto.fornecedor.nomePessoa}</td>
+
+
+
+                                        <td><a href="ExcluirProduto?idProduto=${produto.idProduto}"><button>Excluir</button></a></td>
+                                        <td><a href=" CarregaProduto?idProduto=${produto.idProduto}"><button>Alterar</button></a></td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
+
+
+
+
+
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
 
         </div>
 
-    
+
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
