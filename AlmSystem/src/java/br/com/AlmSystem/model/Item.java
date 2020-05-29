@@ -22,6 +22,7 @@ public class Item {
     private Integer totalItem;
     private Produto produto;
     private Integer retiradaItem ;
+    private Integer operacaoItem ;
 
     public Item() {
     }
@@ -155,6 +156,20 @@ public class Item {
      */
     public void setRetiradaItem(Integer retiradaItem) {
         this.retiradaItem = retiradaItem;
+    }
+
+    /**
+     * @return the operacaoItem
+     */
+    public Integer getOperacaoItem() {
+        return operacaoItem;
+    }
+
+    /**
+     * @param operacaoItem the operacaoItem to set
+     */
+    public void setOperacaoItem(Integer operacaoItem) {
+        this.operacaoItem = operacaoItem;
     }
 
     /**

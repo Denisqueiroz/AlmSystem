@@ -30,13 +30,6 @@ public class ListarEstoque extends HttpServlet {
             int idProduto = Integer.parseInt(request.getParameter("idProduto"));
 
             ItemDAOIpml itemDAOIpml = new ItemDAOIpml();
-
-            GenericDAO dao = new ProdutoDAOImpl();
-            request.setAttribute("produto", dao.carregar(idProduto));
-
-            dao = new ItemDAOIpml();
-            request.setAttribute("items", dao.carregar(idProduto));
-
             request.setAttribute("item", itemDAOIpml.SomaQuantidade(idProduto));
             request.getRequestDispatcher("estoque/listar.jsp").forward(request, response);
         } catch (Exception ex) {

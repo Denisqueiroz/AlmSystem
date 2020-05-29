@@ -30,7 +30,7 @@ BEGIN
 $$ LANGUAGE plpgsql;
 
 
------------trigges-------------------
+-----------FUNCTION-------------------
 
 DROP FUNCTION retirar_quantidade(INTEGER, INTEGER);
 
@@ -39,6 +39,20 @@ returns text  AS $$
 BEGIN
   UPDATE item  set quantidade = quantidade - quant  where id_item = id  ;
      return null ;
+end ;
+$$ LANGUAGE plpgsql;
+
+--------FUNCTION COM  IF ELS
+create  or REPLACE  FUNCTION retirar_quantidade(id integer, quant integer, operacao integer) 
+returns text  AS $$
+BEGIN
+ if operacao = 1 then
+   UPDATE item  set quantidade = quantidade - quant  where id_item = id  ;
+  return null ;
+	 elsif  operacao = 2 then
+  UPDATE item  set quantidade = quantidade + quant  where id_item = id  ;
+  return null ;	 
+	end if ; 
 end ;
 $$ LANGUAGE plpgsql;
 

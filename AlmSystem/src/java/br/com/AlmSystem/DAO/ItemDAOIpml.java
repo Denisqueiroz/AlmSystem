@@ -5,7 +5,6 @@
  */
 package br.com.AlmSystem.DAO;
 
-
 import br.com.AlmSystem.model.Item;
 import br.com.AlmSystem.model.Produto;
 import br.com.AlmSystem.util.ConnectionFactory;
@@ -173,7 +172,9 @@ public class ItemDAOIpml implements GenericDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Item item = null;
-        String sql = "select * from Item  where id_item = ?";
+        String sql = "select i.*, p.descricao  from Item i\n"
+                + " inner join produto p on p.id_prod =i. id_prod\n"
+                + "  where id_item = ?";
 
         try {
             stmt = conn.prepareStatement(sql);
@@ -186,7 +187,7 @@ public class ItemDAOIpml implements GenericDAO {
                 item.setQuantidadeItem(rs.getInt("quantidade"));
                 item.setDataCompraItem(rs.getDate("data_compra"));
                 item.setDataValidadeItem(rs.getDate("data_validade"));
-                item.setProduto(new Produto(rs.getInt("id_prod")));
+                item.setProduto(new Produto(rs.getInt("id_prod"),rs.getString("descricao")));
 
             }
         } catch (SQLException ex) {
@@ -234,16 +235,17 @@ public class ItemDAOIpml implements GenericDAO {
 
     }
 
-    public void SubtrairQuantidade(int idItem, int retiradaItem) {
-      
+    public void AtualizarQuantidade(int idItem, int retiradaItem,  int operacaoItem ) {
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql = " select retirar_quantidade(?, ?);";
+        String sql = " select retirar_quantidade(?, ?, ?); ";
 
         try {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idItem);
             stmt.setInt(2, retiradaItem);
+             stmt.setInt(3, operacaoItem);
             rs = stmt.executeQuery();
 
         } catch (SQLException ex) {

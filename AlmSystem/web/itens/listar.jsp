@@ -60,8 +60,8 @@
                                 <td><a href="${item.notafiscal}" title="Baixar Nota" target="blank">Nota Fiscal</a></td>
 
 
-                                <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
-                                <td><a href="CarregarSaldoEstoque?idItem=${item.idItem}"><button>Retirar Produto</button></a></td> 
+               <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
+               <td><a href="CarregarSaldoEstoque?idItem=${item.idItem}"><button>Movimentar Produto</button></a></td> 
                             </tr>
                         </c:forEach>
 

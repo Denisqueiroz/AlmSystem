@@ -30,14 +30,14 @@ public class AtualizarItem extends HttpServlet {
 
             item.setIdItem(Integer.parseInt(request.getParameter("idItem")));
             item.setRetiradaItem(Integer.parseInt(request.getParameter("retiradaItem")));
-
+            item.setOperacaoItem(Integer.parseInt(request.getParameter("operacaoItem")));
             String mensagem = null;
 
             try {
 
                 ItemDAOIpml dao = new ItemDAOIpml();
 
-                dao.SubtrairQuantidade(item.getIdItem(), item.getRetiradaItem());
+                dao.AtualizarQuantidade(item.getIdItem(), item.getRetiradaItem(),item.getOperacaoItem());
                 mensagem = "Item  editado com sucesso";
                 request.setAttribute("mensagem", mensagem);
                 request.getRequestDispatcher("ListarItens").forward(request, response);

@@ -37,10 +37,10 @@
 
                         <tr>
 
-                            <td>${produto.descricaoProduto}</td>
-                            <td>${produto.unidade.descUnidade}</td>
-                            <td>${produto.marca.nomeMarca}</td>
-                            <td>${produto.fornecedor.nomePessoa}</td>
+                            <td>${item.produto.descricaoProduto}</td>
+                            <td>${item.produto.unidade.descUnidade}</td>
+                            <td>${item.produto.marca.nomeMarca}</td>
+                            <td>${item.produto.fornecedor.nomePessoa}</td>
                             <td>${item.totalItem}</td>                        
                         </tr>
                     </tbody>

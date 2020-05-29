@@ -39,7 +39,7 @@ public class CarregarSaldoEstoque extends HttpServlet {
             try {
                 GenericDAO dao = new ItemDAOIpml();
                 request.setAttribute("item", dao.carregar(idItem));
-                request.getRequestDispatcher("estoque/retirar.jsp").forward(request, response);
+                request.getRequestDispatcher("estoque/movimentacao.jsp").forward(request, response);
 
             } catch (Exception ex) {
                 System.out.println("Problemas ao carregar dados do Fornecedor Erro: " + ex.getMessage());
