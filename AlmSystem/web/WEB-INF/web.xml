@@ -72,6 +72,10 @@
         <servlet-name>AtualizarItem</servlet-name>
         <servlet-class>br.com.AlmSystem.Controller.AtualizarItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioItem</servlet-name>
+        <servlet-class>br.com.AlmSystem.Controller.RelatorioItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogarUsuario</servlet-name>
         <url-pattern>/LogarUsuario</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>AtualizarItem</servlet-name>
         <url-pattern>/AtualizarItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioItem</servlet-name>
+        <url-pattern>/RelatorioItem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

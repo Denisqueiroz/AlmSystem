@@ -187,7 +187,7 @@ public class ItemDAOIpml implements GenericDAO {
                 item.setQuantidadeItem(rs.getInt("quantidade"));
                 item.setDataCompraItem(rs.getDate("data_compra"));
                 item.setDataValidadeItem(rs.getDate("data_validade"));
-                item.setProduto(new Produto(rs.getInt("id_prod"),rs.getString("descricao")));
+                item.setProduto(new Produto(rs.getInt("id_prod"), rs.getString("descricao")));
 
             }
         } catch (SQLException ex) {
@@ -235,7 +235,7 @@ public class ItemDAOIpml implements GenericDAO {
 
     }
 
-    public void AtualizarQuantidade(int idItem, int retiradaItem,  int operacaoItem ) {
+    public void AtualizarQuantidade(int idItem, int retiradaItem, int operacaoItem) {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -245,7 +245,7 @@ public class ItemDAOIpml implements GenericDAO {
             stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idItem);
             stmt.setInt(2, retiradaItem);
-             stmt.setInt(3, operacaoItem);
+            stmt.setInt(3, operacaoItem);
             rs = stmt.executeQuery();
 
         } catch (SQLException ex) {
@@ -262,5 +262,32 @@ public class ItemDAOIpml implements GenericDAO {
         }
 
     }
+
+//    public void AtualizarMovimentacao(int idItem, int retiradaItem) {
+//
+//        PreparedStatement stmt = null;
+//        ResultSet rs = null;
+//        String sql = " select movimentacao_saldo(? , ?); ";
+//
+//        try {
+//            stmt = conn.prepareStatement(sql);
+//            stmt.setInt(1, idItem);
+//            stmt.setInt(2, retiradaItem);
+//
+//            rs = stmt.executeQuery();
+//
+//        } catch (SQLException ex) {
+//            System.out.println("Problemas ao contar o Item! Erro: " + ex.getMessage());
+//            ex.printStackTrace();
+//        } finally {
+//            try {
+//                ConnectionFactory.closeConnection(conn, stmt, rs);
+//
+//            } catch (Exception ex) {
+//                System.out.println("Problemas ao fechar os parâmentros de conexão:  ERRO " + ex.getMessage());
+//                ex.printStackTrace();
+//            }
+//        }
+//    }
 
 }

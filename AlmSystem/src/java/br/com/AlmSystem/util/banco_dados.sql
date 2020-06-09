@@ -75,6 +75,18 @@ constraint fk_produto  foreign key(id_prod) references produto(id_prod)
 
 );
 
+create table movimentacao (
+id_movimentacao serial not null,
+opera varchar(200)not null,
+quantidade int,	
+data_movimentacao date,	
+id_item integer,
+	
+constraint pk_movimentacao primary key (id_movimentacao),
+CONSTRAINT fk_item FOREIGN KEY(id_item) REFERENCES item (id_item)
+);
+
+
 
 
 

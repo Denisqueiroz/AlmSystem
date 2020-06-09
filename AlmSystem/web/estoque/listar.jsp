@@ -6,7 +6,7 @@
 
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
-
+<%@page import="br.com.AlmSystem.model.Produto"%>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -17,42 +17,42 @@
 
 <div class="layout-main">
     <c:import url="../layout/menu.jsp"/> 
-    <section class="layout-content">
-        <div class="container">
-            ${mensagem}
-            <div class="table-responsive">
-                <table class="table table-striped table-hover table-sm">
-                    <thead>
-                        <tr>
 
-                            <td>Descricao</td>
-                            <td>Unidade</td>
-                            <td>Marca</td>
-                            <td>Fornecedor</td>
-                            <td>Total em Estoque</td>
-                        </tr>
-                    </thead>
-                    <tbody>
+    <div class="container">
+        ${mensagem}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-sm">
+                <thead>
+                    <tr>
 
-
-                        <tr>
-
-                            <td>${item.produto.descricaoProduto}</td>
-                            <td>${item.produto.unidade.descUnidade}</td>
-                            <td>${item.produto.marca.nomeMarca}</td>
-                            <td>${item.produto.fornecedor.nomePessoa}</td>
-                            <td>${item.totalItem}</td>                        
-                        </tr>
-                    </tbody>
-                </table>
+                        <td>Descricao</td>
+                        <td>Unidade</td>
+                        <td>Marca</td>
+                        <td>Fornecedor</td>
+                        <td>Total em Estoque</td>
+                    </tr>
+                </thead>
+                <tbody>
 
 
+                    <tr>
 
-                <a href="RetirarEstoque?idProduto=${item.produto.idProduto}" role="button">           
-                    <button type="submit"  class="btn btn-primary">Retirar</button></a>
-                <button type="submit" class="btn btn-primary">Inserir Estoque</button>
-                <button type="submit" class="btn btn-primary">Cancelar Saida</button>
-            </div>
+                        <td>${produto.descricaoProduto}</td>
+                        <td>${produto.unidade.descUnidade}</td>
+                        <td>${produto.marca.nomeMarca}</td>
+                        <td>${produto.fornecedor.nomePessoa}</td>
+                        <td>${item.totalItem}</td>                        
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+            <a href="ListarItens"role="button"> 
+                <button type="submit" class="btn btn-primary  glyphicon glyphicon-trash">Voltar</button></a>
         </div>
-    </section>
+        </div>
+    </div>
+</section>
 

@@ -27,15 +27,20 @@ public class ListarEstoque extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            int idProduto = Integer.parseInt(request.getParameter("idProduto"));
+           int idProduto = Integer.parseInt(request.getParameter("idProduto"));
+
+            GenericDAO dao = new ProdutoDAOImpl();
+            request.setAttribute("produto", dao.carregar(idProduto));
 
             ItemDAOIpml itemDAOIpml = new ItemDAOIpml();
             request.setAttribute("item", itemDAOIpml.SomaQuantidade(idProduto));
+
             request.getRequestDispatcher("estoque/listar.jsp").forward(request, response);
         } catch (Exception ex) {
             System.out.println("Problemas no Servlet a o listar Itens! Erro: " + ex.getMessage());
             ex.printStackTrace();
         }
+
 
     }
 

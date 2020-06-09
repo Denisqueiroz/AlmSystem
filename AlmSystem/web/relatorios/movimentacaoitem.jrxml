@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f1d7ba5-0881-428c-9980-03fb3bf76c7e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="82"/>
+	<queryString>
+		<![CDATA[select * from movimentacao]]>
+	</queryString>
+	<field name="id_movimentacao" class="java.lang.Integer"/>
+	<field name="opera" class="java.lang.String"/>
+	<field name="quantidade" class="java.lang.Integer"/>
+	<field name="data_movimentacao" class="java.sql.Date"/>
+	<field name="id_item" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="178" y="11" width="316" height="46" uuid="b0949ac8-538c-4c9b-89ca-3cc1387c074f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial Black" size="24" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[AlmSystem ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="414" y="59" width="80" height="20" uuid="92445835-437e-4232-af04-4ad3cee84b52"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="505" y="59" width="40" height="20" uuid="ee3a6ae1-f83c-4579-8fc4-6291d07d537b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="h.mm a">
+				<reportElement x="22" y="15" width="100" height="20" uuid="8405f508-4d2c-4754-abd6-2f14a130a0dd"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="15" width="100" height="20" uuid="e3b09ad5-ff25-4765-b740-ab31a2d45412"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="13" width="100" height="20" uuid="4ea71e10-3621-4325-80b7-d2c0a8749d76"/>
+				<text><![CDATA[Codigo Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="13" width="100" height="20" uuid="cb05f5de-57e3-42ee-b276-4719e5c0c54b"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="13" width="100" height="20" uuid="b133cf46-b517-4d76-81c9-8b4153eda9f9"/>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="13" width="100" height="20" uuid="839b3a53-7a99-4ffd-8b07-80c9cc5c99b7"/>
+				<text><![CDATA[data movimentação]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="22" y="11" width="62" height="20" uuid="b2de363c-583e-4049-bce5-af133428bf68"/>
+				<textFieldExpression><![CDATA[$F{id_item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="11" width="100" height="20" uuid="4c784896-aa07-443b-acfa-16d0e6c957e7"/>
+				<textFieldExpression><![CDATA[$F{opera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="292" y="11" width="100" height="20" uuid="acc052a9-7063-4582-8e66-0058b515fe4a"/>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="11" width="100" height="20" uuid="3222ba6f-7a84-448a-b32f-756f44d29d03"/>
+				<textFieldExpression><![CDATA[$F{data_movimentacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

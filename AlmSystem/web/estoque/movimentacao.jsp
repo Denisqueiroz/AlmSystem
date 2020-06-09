@@ -17,51 +17,81 @@
 
 
 
-<section class="layout-content">
 
-    <form action="${pageContext.request.contextPath}/AtualizarItem"  method="POST" class="formulario"> 
 
-        <div class="container">
-         <div class="form-row">
+<form action="${pageContext.request.contextPath}/AtualizarItem"  method="POST" class="formulario"> 
+
+    <div class="container">
+        <div class="form-row">
             <div class="form-group col-md-1"> 
                 <label for="retirada">Codigo</label>
                 <input type="number" class="form-control" id="idItem" 
                        readonly   name="idItem" value="${item.idItem}" />
             </div>
-            
-           <div class="form-group col-md-2">
-	                        <label for="operacaoItem">Movimentação</label>
-	                        <select id="operacaoItem" class="form-control" name="operacaoItem">
-	                            <option value="">Selecione</option>
-	                             <option value="2">Restornar</option>
-	                             <option value="1">Retirar</option>
-	                            
-	                        </select>
-	                    </div>
+           
+            <div class="form-group col-md-2">
+                <label for="operacaoItem">Movimentação</label>
+                <select id="operacaoItem" class="form-control" name="operacaoItem">
+                    <option value="">Selecione</option>
+                    <option id="operacaoItem1" value="2">Estorna</option>
+                    <option value="1">Retirar</option>
+
+                </select>
+            </div>
 
             <div class="form-group col-md-3"> 
                 <label for="descricaoProduto">Descrição do Produto</label>
                 <input type="text" class="form-control" id="nome" placeholder="Digite a descrição"
-                  readonly    value="${item.produto.descricaoProduto}"  
+                       readonly    value="${item.produto.descricaoProduto}"  
                        autofocus="autofocus" name="descricaoProduto" value=""/>
             </div>
 
-           
-                <div class="form-group col-md-2"> 
-                    <label for="retirada">Quantidade Dispónivel</label>
-                    <input type="number" class="form-control" id="saldoItem" 
-                           readonly   name="quantidadeItem" value="${item.quantidadeItem}" />
-                </div>
 
-                <div class="form-group col-md-2"> 
-                    <label for="retiradaItem"> Quantidade </label>
-                    <input type="number" class="form-control" id="retiradaItem" 
-                           name="retiradaItem" value="" />
-             
+            <div class="form-group col-md-2"> 
+                <label for="retirada">Quantidade Dispónivel</label>
+                <input type="number" class="form-control" id="saldoItem" 
+                       readonly   name="quantidadeItem" value="${item.quantidadeItem}" />
             </div>
-         </div>
-                <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-            </div>
-    </form>
 
-</section>
+            <div class="form-group col-md-2"> 
+                <label for="retiradaItem"> Quantidade </label>
+                <input type="number" class="form-control" id="retiradaItem" 
+                       name="retiradaItem" value="" />
+
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+    </div>
+</form>
+
+<!-- <a href="#" class="card-link" data-toggle="modal" data-target="#siteModal">Chama</a>-->
+
+<!--Modal -->
+
+<div class="modal fade" id="siteModal" tabindex="-1" role=" dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Fusce ac crusus nisi</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>X</span></button>
+            </div>
+
+            <div class="modal-body">
+                <p>Teste aleluia vai funcionar  osssssaaaaa</p>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Donec</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $('#operacaoItem').on('change', function () {
+        $('#siteModal').modal('toggle')
+    })
+
+</script>

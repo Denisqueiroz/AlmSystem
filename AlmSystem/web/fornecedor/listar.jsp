@@ -22,22 +22,6 @@
         <div class="layout-main">
             <c:import url="../layout/menu.jsp"/>
 
-            <section class="layout-content">
-                <nav class="navbar navbar-expand-md bg-light">
-                    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <i class="oi oi-caret-right"></i>
-                                <span>Lista de Fornecedores</span>
-                            </li>
-                        </ul>
-                        <a class="btn btn-primary btn-md" href="fornecedor/cadastrar.jsp" role="button">
-                            <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-                            <span>Cadastrar Fornecedor</span>
-                        </a>
-                    </div>
-                </nav>
-
                 <div class="container">
 
                     ${mensagem}
@@ -88,8 +72,7 @@
 
                     </div>
                 </div>
-            </section>
-
+      
         </div>
 
 

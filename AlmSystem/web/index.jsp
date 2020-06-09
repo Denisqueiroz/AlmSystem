@@ -1,9 +1,34 @@
 <%-- 
-    Document   : index
-    Created on : 30/03/2020, 14:13:58
+    Document   : index2
+    Created on : 09/06/2020, 15:33:46
     Author     : TBO-002
 --%>
-
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="layout/header.jsp"/>
-<c:import url="layout/menu.jsp"/>
+
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>AmlSytem</title>
+        <!-- The styles -->
+   
+       
+    </head>
+    <body>
+    <!-- topbar starts -->
+    <div  role="navigation">
+
+        <div class="navbar-inner">
+         
+        </div>
+    </div>
+   <c:import url="layout/menu.jsp"/>
+
+                      
+   
+
+</body>
+</html>

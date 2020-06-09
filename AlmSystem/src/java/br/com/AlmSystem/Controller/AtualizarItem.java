@@ -36,6 +36,9 @@ public class AtualizarItem extends HttpServlet {
             try {
 
                 ItemDAOIpml dao = new ItemDAOIpml();
+                
+               
+                
 
                 dao.AtualizarQuantidade(item.getIdItem(), item.getRetiradaItem(),item.getOperacaoItem());
                 mensagem = "Item  editado com sucesso";
