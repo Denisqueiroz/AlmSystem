@@ -15,7 +15,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Atenção</h1>
-        <h1>Sistema aparesentou um problema, favor entrar em contato com o suporte ! 
+     
+        <span>  <h1>Sistema aparesentou um problema, pagina não encontrada ! </h1></span>
     </body>
 </html>

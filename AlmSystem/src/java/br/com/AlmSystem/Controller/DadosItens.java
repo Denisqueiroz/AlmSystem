@@ -6,7 +6,7 @@
 package br.com.AlmSystem.Controller;
 
 import br.com.AlmSystem.DAO.GenericDAO;
-import br.com.AlmSystem.DAO.ProdutoDAOImpl;
+import br.com.AlmSystem.DAO.ItemDAOIpml;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,17 +20,27 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DadosItens extends HttpServlet {
 
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        
+        String origem = request.getParameter("origem");
 
-            request.getRequestDispatcher("itens/salvar.jsp").forward(request, response);
+        try {
 
+            GenericDAO dao = new ItemDAOIpml();
+            request.setAttribute("items", dao.listar());
+            if (origem.equals("salvar")) {
+                request.getRequestDispatcher("itens/salvar.jsp").forward(request, response);
+            } else if (origem.equals("relatorio")) {
+                request.getRequestDispatcher("itens/realtorios.jsp").forward(request, response);
+            }
         } catch (Exception ex) {
-            System.out.println("Problemas ao carregar dados de unidade marca e fornecedor ! Erro" + ex.getMessage());
+            System.out.println("Problemas ao buscar dados item! Erro: " + ex.getMessage());
             ex.printStackTrace();
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

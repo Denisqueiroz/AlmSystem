@@ -8,7 +8,8 @@
 <%@page import="br.com.AlmSystem.model.Item"%>
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
-
+<c:choose>
+    <c:when test="${funcionario.tipoPessoa eq 'administrador'}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Movimentar Itens</title>
@@ -55,3 +56,8 @@
                 </form>
             </div>
             </section>
+</c:when>
+    <c:otherwise>
+        <c:redirect url="../index.jsp"></c:redirect>
+    </c:otherwise>
+</c:choose>

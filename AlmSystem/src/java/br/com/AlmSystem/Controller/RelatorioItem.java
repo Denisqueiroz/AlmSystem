@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -31,10 +32,12 @@ public class RelatorioItem extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=ISO-8859-1");
 
+        Integer idItem = Integer.parseInt(request.getParameter("idItem"));
+
         ServletOutputStream servletOutputStream = response.getOutputStream();
 
         String caminho = "/relatorios/";
-        String relatorio = caminho + "movimentacaoitem.jasper";
+        String relatorio = caminho + "relatorioitem.jasper";
 
         InputStream reportStream = getServletConfig().getServletContext().getResourceAsStream(relatorio);
 
@@ -44,10 +47,13 @@ public class RelatorioItem extends HttpServlet {
             conn = ConnectionFactory.getConnection();
             System.out.println("Conexão do relatório com o banco de dados realizada com sucesso!");
 
+            Map parametros = new HashMap();
+            parametros.put("idItem", idItem);
+
             //envia o relatório em formato PDF para o browser
             response.setContentType("application/pdf");
             //para gerar o relatório no formato PDF o método runReportToPdfStream foi usado
-            JasperRunManager.runReportToPdfStream(reportStream, servletOutputStream, new HashMap(), conn);
+            JasperRunManager.runReportToPdfStream(reportStream, servletOutputStream, parametros, conn);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(RelatorioItem.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -69,6 +75,7 @@ public class RelatorioItem extends HttpServlet {
         }
 
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -5,6 +5,8 @@
 --%>
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
+<c:choose>
+    <c:when test="${funcionario.tipoPessoa eq 'administrador'}">
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +31,7 @@
 
         <div class="layout-main">
 
-            <c:import url="../layout/menu.jsp"/> 
+            <c:import url="${pageContext.request.contextPath}/../layout/menu.jsp"/> 
 
 
             <!--------------------campo de cadastro----------------------------------------------------->
@@ -209,3 +211,8 @@
             </script>
     </body>
 </html>
+</c:when>
+    <c:otherwise>
+        <c:redirect url="../index.jsp"></c:redirect>
+    </c:otherwise>
+</c:choose>

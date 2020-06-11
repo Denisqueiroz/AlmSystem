@@ -15,12 +15,13 @@ pais varchar(12),
 CONSTRAINT pk_pessoa PRIMARY KEY (id_pessoa)
 );
 
-create table usuario (
-id_usuario serial not null,
-login varchar(12)not null,
-senha varchar(9)not null,
+create table funcionario (
+id_funcionario serial not null,
+cpf varchar(20),
+login varchar(12),
+senha varchar(9),
 id_pessoa integer,
-constraint pk_usuario primary key (id_usuario),
+constraint pk_funcionario primary key (id_funcionario),
 CONSTRAINT fk_pessoa_usuario FOREIGN KEY(id_pessoa) REFERENCES pessoa(id_pessoa)
 );
 

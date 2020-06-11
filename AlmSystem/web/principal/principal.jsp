@@ -4,15 +4,11 @@
     Author     : TBO-002
 --%>
 
-<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:choose>
-    <c:when test="${pessoa.tipoPessoa eq 'a'}">
-        <c:import url="layout/header.jsp"/>
-        <c:import url="layout/menu.jsp"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 
 
-    </c:when>
-    <c:otherwise>
-        <c:redirect url="../index.jsp"></c:redirect>
-    </c:otherwise>
-</c:choose>
+<c:import url="../layout/header.jsp"/>
+<c:import url="../layout/menu.jsp"/>
+<a href="${pageContext.request.contextPath}/LogarFuncionario?acao=logout">Sair</a>   <br />  
+<section>   <h3>${saudacao}</h3> </section>

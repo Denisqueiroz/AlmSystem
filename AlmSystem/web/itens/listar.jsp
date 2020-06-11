@@ -9,7 +9,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 
-
+<c:choose>
+    <c:when test="${funcionario.tipoPessoa eq 'administrador'}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Listar Itens</title>
@@ -57,7 +58,7 @@
 
                         <td><a href="ListarEstoque?idProduto=${item.produto.idProduto}"><button>Consultar Estoque</button></a></td>
                         <td><a href="CarregarSaldoEstoque?idItem=${item.idItem}"><button>Movimentar Produto</button></a></td> 
-                        <td><a href="${pageContext.request.contextPath}/RelatorioItem"><button>Relatorio Item</button></a></td>
+                        <td target="_blank"><a href="RelatorioItem?idItem=${item.idItem}" ><button>Relatorio Item</button></a></td>
                     </tr>
                 </c:forEach>
 
@@ -70,3 +71,8 @@
    
 </div>
 
+</c:when>
+    <c:otherwise>
+        <c:redirect url="${pageContext.request.contextPath}/index.jsp"></c:redirect>
+    </c:otherwise>
+</c:choose>

@@ -33,10 +33,6 @@
         <servlet-class>br.com.AlmSystem.Controller.CadastrarIntens</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DadosItens</servlet-name>
-        <servlet-class>br.com.AlmSystem.Controller.DadosItens</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ExcluirItem</servlet-name>
         <servlet-class>br.com.AlmSystem.Controller.ExcluirItem</servlet-class>
     </servlet>
@@ -73,8 +69,20 @@
         <servlet-class>br.com.AlmSystem.Controller.AtualizarItem</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DadosItens</servlet-name>
+        <servlet-class>br.com.AlmSystem.Controller.DadosItens</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RelatorioItem</servlet-name>
         <servlet-class>br.com.AlmSystem.Controller.RelatorioItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SalvarFuncionario</servlet-name>
+        <servlet-class>br.com.AlmSystem.Controller.SalvarFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogarFuncionario</servlet-name>
+        <servlet-class>br.com.AlmSystem.Controller.LogarFuncionario</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogarUsuario</servlet-name>
@@ -107,10 +115,6 @@
     <servlet-mapping>
         <servlet-name>CadastrarIntens</servlet-name>
         <url-pattern>/CadastrarIntens</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DadosItens</servlet-name>
-        <url-pattern>/DadosItens</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ExcluirItem</servlet-name>
@@ -149,8 +153,20 @@
         <url-pattern>/AtualizarItem</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>DadosItens</servlet-name>
+        <url-pattern>/DadosItens</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>RelatorioItem</servlet-name>
         <url-pattern>/RelatorioItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SalvarFuncionario</servlet-name>
+        <url-pattern>/SalvarFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogarFuncionario</servlet-name>
+        <url-pattern>/LogarFuncionario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
