@@ -18,7 +18,7 @@
     
         
          <c:import url="../layout/body.jsp"/>
-        
+         
         
          <c:import url="../layout/section.jsp"/>
       
@@ -30,5 +30,3 @@
    
        
     </html>
-
-  ${saudacao}

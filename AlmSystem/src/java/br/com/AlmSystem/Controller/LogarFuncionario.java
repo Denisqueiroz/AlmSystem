@@ -15,9 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
-
 /**
  *
  * @author TBO-002
@@ -25,36 +22,35 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "LogarFuncionario", urlPatterns = {"/LogarFuncionario"})
 public class LogarFuncionario extends HttpServlet {
 
-  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=ISO-8859-1");
 
         if (request.getParameter("acao").equalsIgnoreCase("logar")) {
-           
+
             Funcionario funcionario = null;
 
             if (!request.getParameter("login").equals("") && !request.getParameter("senha").equals("")) {
 
                 try {
 
-                   FuncionarioDAOIpml dao = new FuncionarioDAOIpml(); 
-                   funcionario = dao.logarFuncionario(request.getParameter("login"), request.getParameter("senha"));
+                    FuncionarioDAOIpml dao = new FuncionarioDAOIpml();
+                    funcionario = dao.logarFuncionario(request.getParameter("login"), request.getParameter("senha"));
 
                     if (funcionario != null) {
-                        
+
                         HttpSession session = request.getSession(true);
                         session.setAttribute("funcionario", funcionario);
                         session.setAttribute("saudacao", "Seja bem-vindo Sr(a). " + funcionario.getNomePessoa() + "!");
-                        
-                        if (funcionario.getTipoPessoa().equalsIgnoreCase("funcionario")){
+
+                        if (funcionario.getTipoPessoa().equalsIgnoreCase("funcionario")) {
                             request.getRequestDispatcher("principal/principal.jsp").forward(request, response);
-                        } else if (funcionario.getTipoPessoa().equalsIgnoreCase("administrador")){
-                  request.getRequestDispatcher("principal/principal.jsp").forward(request, response);
+                        } else if (funcionario.getTipoPessoa().equalsIgnoreCase("administrador")) {
+                            request.getRequestDispatcher("principal/principal.jsp").forward(request, response);
                         } else {
                             erro(request, response, "Não foram encontrados usuários de tipificação válida!");
                         }
-                        
+
                     } else {
                         erro(request, response, "Usuario e/ou Senha inválidos! Tente novamente!");
                     }
@@ -82,7 +78,7 @@ public class LogarFuncionario extends HttpServlet {
         request.getRequestDispatcher("../index.jsp").forward(request, response);
     }
 
-      // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
