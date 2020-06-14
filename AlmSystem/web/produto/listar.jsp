@@ -21,11 +21,11 @@
     </head>
     <body>
 
-        <c:import url="../layout/header.jsp"/>
+        <c:import url="../layout/head.jsp"/>
 
         <div class="layout-main">
 
-            <c:import url="../layout/menu.jsp"/>
+            <c:import url="../layout/body.jsp"/>
 
             <section class="layout-content">
 
@@ -71,8 +71,9 @@
 
 
 
-                                        <td><a href="ExcluirProduto?idProduto=${produto.idProduto}"><button>Excluir</button></a></td>
-                                        <td><a href=" CarregaProduto?idProduto=${produto.idProduto}"><button>Alterar</button></a></td>
+                                       
+                                        <td><a href=" CarregaProduto?idProduto=${produto.idProduto}"><span class="oi oi-circle-x" title="Excluir Fornecedor" aria-hidden="true"></span>Alterar</a></td>
+                                    <td><a href="ExcluirProduto?idProduto=${produto.idProduto}"> <span class="oi oi-aperture" title="Alterar Fornecedor" ></span>Excluir</a></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

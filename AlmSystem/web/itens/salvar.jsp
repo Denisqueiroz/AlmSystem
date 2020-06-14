@@ -7,17 +7,16 @@
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<c:choose>
-    <c:when test="${funcionario.tipoPessoa eq 'administrador'}">
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <title>Cadastro de Fornecedores</title>
     </head>
     <body>
-        <c:import url="../layout/header.jsp"/>
+        <c:import url="../layout/head.jsp"/>
         <div class="layout-main">
-            <c:import url="../layout/menu.jsp"/> 
+            <c:import url="../layout/body.jsp"/> 
             <section class="layout-content">
 
                 <div class="container" id="cadastro">
@@ -68,11 +67,20 @@
 
                                 </div>
                             </div>
+      <div class="form-group">
+      <label  custom-file-label for="notafiscai">Nota Fiscal: </label>
+      <div class="input-group">
+          <div class="custom-file">
+      <input type="file" value="${item.notafiscal}" 
+              name="notafiscal" id="notafiscal" placeholder="Nota Fiscal" /><br />     
+        
 
-                            <label for="notafiscai">Nota Fiscal: </label><input type="file" value="${item.notafiscal}" 
-                                                                                name="notafiscal" id="notafiscal" placeholder="Nota Fiscal" /><br />     
-
-
+      </div>
+      </div>
+      </div>
+         <!----------------------------------------->
+         
+                
 
                         </div>
                         <div class="form-row">
@@ -84,19 +92,7 @@
 
                     </form>
 
-                    <div class="form-row">                  
-
-                        <br/> <br/><br/><br/>
-                        <div class="form-row">  
-
-                            <form class="form-inline mt-2 mt-md-0">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Procurar Produto" aria-label="blue">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar </button>
-                            </form>
-
-                        </div>
-
-                    </div>
+                  
             </section>
         </div>
 
@@ -106,8 +102,3 @@
 
     </body>
 </html>
-</c:when>
-    <c:otherwise>
-        <c:redirect url="../index.jsp"></c:redirect>
-    </c:otherwise>
-</c:choose>

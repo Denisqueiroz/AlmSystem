@@ -8,27 +8,18 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>LocaBud Sistemas Web</title>
-
-       
-    </head>
-    
-        
-         <c:import url="../layout/body.jsp"/>
-        
-        
-         <c:import url="../layout/section.jsp"/>
-      
-         <c:import url="../layout/footer.jsp"/>
-        
-        
-        
-        
    
-       
-    </html>
 
-  ${saudacao}
+    <c:import url="../layout/head.jsp"/>
+    <c:import url="../layout/body.jsp"/>
+    <c:import url="../layout/section.jsp"/>
+    <c:import url="../layout/footer.jsp"/>
+
+
+
+
+
+
+</html>
+
+

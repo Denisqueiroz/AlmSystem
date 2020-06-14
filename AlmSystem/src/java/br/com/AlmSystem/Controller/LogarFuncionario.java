@@ -24,7 +24,8 @@ public class LogarFuncionario extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=ISO-8859-1");
+        
+       response.setContentType("text/html;charset=ISO-8859-1");
 
         if (request.getParameter("acao").equalsIgnoreCase("logar")) {
 
